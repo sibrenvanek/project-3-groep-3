@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.button1 = new System.Windows.Forms.Button();
             this.radioButton5 = new System.Windows.Forms.RadioButton();
@@ -46,8 +47,13 @@
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
             this.splitContainer1.Name = "splitContainer1";
             // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("splitContainer1.Panel1.BackgroundImage")));
+            // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.BackColor = System.Drawing.SystemColors.ControlDark;
             this.splitContainer1.Panel2.Controls.Add(this.button1);
             this.splitContainer1.Panel2.Controls.Add(this.radioButton5);
             this.splitContainer1.Panel2.Controls.Add(this.radioButton4);
@@ -55,8 +61,8 @@
             this.splitContainer1.Panel2.Controls.Add(this.radioButton2);
             this.splitContainer1.Panel2.Controls.Add(this.radioButton1);
             this.splitContainer1.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel2_Paint);
-            this.splitContainer1.Size = new System.Drawing.Size(806, 504);
-            this.splitContainer1.SplitterDistance = 624;
+            this.splitContainer1.Size = new System.Drawing.Size(815, 595);
+            this.splitContainer1.SplitterDistance = 630;
             this.splitContainer1.TabIndex = 0;
             // 
             // button1
@@ -132,7 +138,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(806, 504);
+            this.ClientSize = new System.Drawing.Size(815, 595);
             this.Controls.Add(this.splitContainer1);
             this.Name = "Form1";
             this.Text = "Form1";
