@@ -1,0 +1,9 @@
+c:\users\erik\documents\visual studio 2017\Projects\Button1\Button1\bin\Debug\Button1.exe.config
+c:\users\erik\documents\visual studio 2017\Projects\Button1\Button1\bin\Debug\Button1.exe
+c:\users\erik\documents\visual studio 2017\Projects\Button1\Button1\bin\Debug\Button1.pdb
+c:\users\erik\documents\visual studio 2017\Projects\Button1\Button1\obj\Debug\Button1.csprojResolveAssemblyReference.cache
+c:\users\erik\documents\visual studio 2017\Projects\Button1\Button1\obj\Debug\Button1.Form1.resources
+c:\users\erik\documents\visual studio 2017\Projects\Button1\Button1\obj\Debug\Button1.Properties.Resources.resources
+c:\users\erik\documents\visual studio 2017\Projects\Button1\Button1\obj\Debug\Button1.csproj.GenerateResource.Cache
+c:\users\erik\documents\visual studio 2017\Projects\Button1\Button1\obj\Debug\Button1.exe
+c:\users\erik\documents\visual studio 2017\Projects\Button1\Button1\obj\Debug\Button1.pdb
