@@ -91,4 +91,20 @@ namespace app
             spriteBatch.End();
         }
     }
+    public class Location : Game
+        {
+        //name , postcode , WOZ , income , image , image_location , image_color , budget
+
+            string name , postcode;
+            int WOZ , Budget ;
+            Texture2D Image;
+            
+
+        
+        private Location (Texture2D image)
+            {
+
+            }
+}
+
 }
