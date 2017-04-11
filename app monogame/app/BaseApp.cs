@@ -17,7 +17,7 @@ namespace app
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(this.Background, new Vector2(10,10), Color.White);
+            spriteBatch.Draw(this.Background, new Vector2(0,0), Color.White);
         }
     }
 }

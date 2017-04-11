@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System;
 
 namespace app
 {
@@ -29,6 +30,11 @@ namespace app
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+            graphics.IsFullScreen = false;
+            graphics.PreferredBackBufferWidth = Convert.ToInt32(GraphicsDevice.DisplayMode.Width * 0.9f);
+            graphics.PreferredBackBufferHeight = Convert.ToInt32(GraphicsDevice.DisplayMode.Height * 0.9f);
+            graphics.ApplyChanges();
+            Window.AllowUserResizing = true;
             LoadContent();
             base.Initialize();
         }
@@ -80,8 +86,7 @@ namespace app
             GraphicsDevice.Clear(Color.CornflowerBlue);
             spriteBatch.Begin();
             // TODO: Add your drawing code here
-            //app.Draw(spriteBatch);
-            spriteBatch.Draw(basemap, new Vector2(0, 0), Color.White);
+            app.Draw(spriteBatch);
             base.Draw(gameTime);
             spriteBatch.End();
         }
