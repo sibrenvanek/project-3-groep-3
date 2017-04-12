@@ -45,20 +45,104 @@
     <Compile Include="Game1.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SQLite.cs" />
+    <Compile Include="SQLiteAsync.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">
       <HintPath>$(MonoGameInstallDirectory)\MonoGame\v3.0\Assemblies\Windows\MonoGame.Framework.dll</HintPath>
     </Reference>
+    <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.6.9.9\lib\net45\MySql.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\2901.png" />
+    <Content Include="Content\2902.png" />
+    <Content Include="Content\2906.png" />
+    <Content Include="Content\2907.png" />
+    <Content Include="Content\2909.png" />
+    <Content Include="Content\2987.png" />
+    <Content Include="Content\3012 en 2011.png" />
+    <Content Include="Content\3013 en 3033 en 3032.png" />
+    <Content Include="Content\3014 en 3015.png" />
+    <Content Include="Content\3016.png" />
+    <Content Include="Content\3021.png" />
+    <Content Include="Content\3022.png" />
+    <Content Include="Content\3023.png" />
+    <Content Include="Content\3024.png" />
+    <Content Include="Content\3025.png" />
+    <Content Include="Content\3026.png" />
+    <Content Include="Content\3027.png" />
+    <Content Include="Content\3028.png" />
+    <Content Include="Content\3029.png" />
+    <Content Include="Content\3031.png" />
+    <Content Include="Content\3034.png" />
+    <Content Include="Content\3036 en 3035.png" />
+    <Content Include="Content\3038 en 3037.png" />
+    <Content Include="Content\3039.png" />
+    <Content Include="Content\3042 en 3041.png" />
+    <Content Include="Content\3043.png" />
+    <Content Include="Content\3044.png" />
+    <Content Include="Content\3045.png" />
+    <Content Include="Content\3051.png" />
+    <Content Include="Content\3052 en 3053.png" />
+    <Content Include="Content\3054.png" />
+    <Content Include="Content\3055.png" />
+    <Content Include="Content\3056.png" />
+    <Content Include="Content\3061.png" />
+    <Content Include="Content\3062.png" />
+    <Content Include="Content\3063.png" />
+    <Content Include="Content\3064.png" />
+    <Content Include="Content\3065.png" />
+    <Content Include="Content\3066.png" />
+    <Content Include="Content\3067.png" />
+    <Content Include="Content\3068.png" />
+    <Content Include="Content\3069.png" />
+    <Content Include="Content\3071.png" />
+    <Content Include="Content\3072.png" />
+    <Content Include="Content\3073.png" />
+    <Content Include="Content\3074.png" />
+    <Content Include="Content\3075.png" />
+    <Content Include="Content\3076.png" />
+    <Content Include="Content\3077.png" />
+    <Content Include="Content\3078.png" />
+    <Content Include="Content\3079.png" />
+    <Content Include="Content\3081.png" />
+    <Content Include="Content\3082.png" />
+    <Content Include="Content\3083.png" />
+    <Content Include="Content\3084.png" />
+    <Content Include="Content\3085.png" />
+    <Content Include="Content\3086.png" />
+    <Content Include="Content\3089 en 3087 en 3088.png" />
+    <Content Include="Content\3111.png" />
+    <Content Include="Content\3112.png" />
+    <Content Include="Content\3113.png" />
+    <Content Include="Content\3114.png" />
+    <Content Include="Content\3115-2.png" />
+    <Content Include="Content\3115.png" />
+    <Content Include="Content\3116.png" />
+    <Content Include="Content\3117.png" />
+    <Content Include="Content\3118.png" />
+    <Content Include="Content\3119.png" />
+    <Content Include="Content\3122 en 3121.png" />
+    <Content Include="Content\3124 en 3123.png" />
+    <Content Include="Content\3129.png" />
+    <Content Include="Content\3134.png" />
+    <Content Include="Content\3135.png" />
+    <Content Include="Content\3136.png" />
+    <Content Include="Content\3137.png" />
+    <Content Include="Content\mapje2.png" />
     <Content Include="Icon.ico" />
   </ItemGroup>
   <ItemGroup>
     <MonoGameContentReference Include="Content\Content.mgcb" />
+    <None Include="app.config" />
     <None Include="app.manifest" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />
