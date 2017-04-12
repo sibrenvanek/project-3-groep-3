@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 public class Location
 {
     string Name, Postcode;
-    int WOZ;
+    int WOZ=100;
     Texture2D Image;
     Color Color;
     Vector2 Position;

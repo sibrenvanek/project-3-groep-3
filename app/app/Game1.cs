@@ -202,7 +202,7 @@ namespace app
             wijk3136 = this.Content.Load<Texture2D>("3136");
             wijk3137 = this.Content.Load<Texture2D>("3137");
             app = new BaseApp(basemap);
-            Wijk2901 = new Location();
+            //Wijk2901 = new Location();
         }
         
         /// <summary>
