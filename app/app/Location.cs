@@ -13,13 +13,13 @@ public class Location
     Texture2D Image;
     Color Color;
     Vector2 Position;
-    int budget;
+    int budget=70;
     public Location(string name, string postcode, Texture2D image, int budget)
     {
         this.Name = name;
         this.Postcode = postcode;
         this.Image = image;
-        this.Color = Color.White;
+        this.Color = Color.Blue;
         this.Position = new Vector2(0, 0);
         this.budget = budget;
         //this.WOZ = getWOZ();
@@ -30,6 +30,7 @@ public class Location
         FROM Wijk
         WHERE post_code = this.Postcode;
     }*/
+ 
     public void Draw(SpriteBatch spritebatch)
     {
         spritebatch.Draw(this.Image, this.Position, this.Color);
@@ -37,12 +38,12 @@ public class Location
     public void Update(float dt)
     {
         int A;
-        A = (budget/WOZ)*100;
+        A = ((this.budget/this.WOZ)*100);
 
         if (A>80 & A<=120 )
         {
             // groen
-            this.Color = Color.Red;
+            this.Color = Color.Green;
         }
         else if ( A>60 & A<=80 || A>120 & A<=140 )
         {
@@ -64,6 +65,11 @@ public class Location
             //red
             this.Color = Color.Red;
         }
+        else
+        {
+            this.Color = Color.Purple;
+        }
+        
 
     }
 }

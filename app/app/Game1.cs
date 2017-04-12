@@ -201,8 +201,8 @@ namespace app
             wijk3135 = this.Content.Load<Texture2D>("3135");
             wijk3136 = this.Content.Load<Texture2D>("3136");
             wijk3137 = this.Content.Load<Texture2D>("3137");
-            app = new BaseApp(basemap);
-            //Wijk2901 = new Location();
+            app = new BaseApp(basemap, wijk2901);
+            
         }
         
         /// <summary>
@@ -225,7 +225,7 @@ namespace app
                 Exit();
 
             // TODO: Add your update logic here
-
+            app.Update((float) gameTime.ElapsedGameTime.TotalSeconds);
             base.Update(gameTime);
         }
 
