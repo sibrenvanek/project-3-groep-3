@@ -15,17 +15,17 @@ namespace app
         BaseApp app;
         Texture2D basemap;
         Texture2D array_wijk_image;
-        List<object> List_Locations = new List<object> ();
+        List<object> List_Locations = new List<object>();
 
 
 
-        public BaseApp(Texture2D background , List<Texture2D> List_wijk_image,int budget)
+        public BaseApp(Texture2D background, List<Texture2D> List_wijk_image, int budget)
         {
             this.Background = background;
-            
 
-            
-            List_Locations.Add(new Location("wijk2901", "2901",List_wijk_image[0], budget));
+
+
+            List_Locations.Add(new Location("wijk2901", "2901", List_wijk_image[0], budget));
             List_Locations.Add(new Location("wijk2901", "2902", List_wijk_image[1], budget));
             List_Locations.Add(new Location("wijk2901", "2906", List_wijk_image[2], budget));
             List_Locations.Add(new Location("wijk2901", "2907", List_wijk_image[3], 200));
@@ -100,14 +100,6 @@ namespace app
             List_Locations.Add(new Location("wijk2901", "2907", List_wijk_image[72], budget));
             List_Locations.Add(new Location("wijk2901", "2907", List_wijk_image[73], budget));
             List_Locations.Add(new Location("wijk2901", "2907", List_wijk_image[74], budget));
-
-
-
-
-            // New_wijk2901 = new Location("wijk2901", "2901",wijk2901, 100);
-
-
-
         }
         public void Draw(SpriteBatch spriteBatch)
         {
@@ -121,8 +113,8 @@ namespace app
         }
         public void Update(float dt)
         {
-            
-            foreach(Location loc in List_Locations)
+
+            foreach (Location loc in List_Locations)
             {
                 loc.Update(dt);
             }

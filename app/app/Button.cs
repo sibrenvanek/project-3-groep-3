@@ -1,73 +1,73 @@
-﻿//using System;
-//using System.Collections.Generic;
-//using System.Linq;
-//using System.Text;
-//using System.Threading.Tasks;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using app;
+using Microsoft.Xna.Framework.Input;
 
-//namespace app
-//{
-//    class Button
-//    {
-//        public Button(x, y, width, height, function, color, hovercolor, text)
-//    }
+namespace app
+{
+    
+    public class Button
+    {
+        int buttonX, buttonY;
+        string Name;
+        Texture2D Texture;
+        bool isClicked;
+        bool isHovered;
+        Vector2 Position;
 
-//    class Button :
-//    def __init__(self, x, y, width, height, function, color, hovercolor, text, constant=False, textsize=None, textcolor=(255,255,255)):
-//        self.X = x
-//        self.Y = y
-//        self.Width = width
-//        self.Height = height
+        public int ButtonX
+        {
+            get
+            {
+                return buttonX;
+            }
+        }
 
-//        self.Function = function
-//        self.Color = color
-//        self.Color_hover = hovercolor
-//        self.Color_text = textcolor
-//        self.Text = text
-//        if textsize != None: self.Text_size = textsize
-//        else: self.Text_size = int(self.Height / 1.2)
+        public int ButtonY
+        {
+            get
+            {
+                return buttonY;
+            }
+        }
 
-//        self.Constant = constant
+        public Button(string name, Texture2D texture, int buttonX, int buttonY)
+        {
+            this.Name = name;
+            this.Texture = texture;
+            this.buttonX = buttonX;
+            this.buttonY = buttonY;
+            this.Position = new Vector2(this.buttonX, this.buttonY);
+        }
 
-//        self.Pressing = False
-//        self.Pressed = False
+        public void Update(float dt)
+        {
+            var mouseState = Mouse.GetState();
+            var mousePoint = new Point(mouseState.X, mouseState.Y);
+            var rectangle = new Rectangle(mousePoint.X, mousePoint.Y, this.Texture.Width, this.Texture.Height);
 
-
-//    def Click(self): return pygame.mouse.get_pressed()[0]
-//    def Hover(self):
-//        if self.X<pygame.mouse.get_pos()[0] < self.X + self.Width:
-//            if self.Y<pygame.mouse.get_pos()[1] < self.Y + self.Height: return True
-//        return False
-
-//    def Draw(self):
-//        if self.Hover():
-//            pygame.draw.rect(game.Display, self.Color_hover, (self.X, self.Y, self.Width, self.Height))
-
-//            if self.Constant == True:
-//                if self.Click():
-//                    self.Pressing = True
-//                else:
-//                    if self.Pressing:
-//                        if self.Pressed:
-//                            self.Pressed = False
-//                        else:
-//                            self.Pressed = True
-//                        self.Pressing = False
-//            else:
-//                self.Pressing = self.Click()
-//                if self.Pressing:
-//                    self.Pressed = True
-//                    self.Pressing = False
-//                else:
-//                    if self.Pressed == True:
-//                        self.Function()
-//                        #PlaySound(Mouseclick)
-//                        self.Pressed = False
-
-//        else:
-//            pygame.draw.rect(game.Display, self.Color, (self.X, self.Y, self.Width, self.Height))
-//        text(self.Text, int(self.Text_size), self.X + 5, self.Y + self.Height / 5, self.Color_text)
-
-//        if self.Constant == True:
-//            if self.Pressed:
-//                self.Function()
-//}
+            if (rectangle.Contains(mousePoint))
+            {
+                isHovered = true;
+                isClicked = mouseState.LeftButton == ButtonState.Pressed;
+            }
+            else
+            {
+                isHovered = false;
+                isClicked = false;
+            }
+        }
+        public void Draw(SpriteBatch spriteBatch)
+        {
+            if (isHovered)
+                spriteBatch.Draw(this.Texture, this.Position, Color.LightGray);
+            else
+                spriteBatch.Draw(this.Texture, this.Position, Color.White);
+        }
+    }
+}

@@ -1,12 +1,10 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Input;
-
+using System.Linq;
+using System;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace app
 {
@@ -17,15 +15,10 @@ namespace app
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-
-
-        
-
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
-            
         }
 
         /// <summary>
@@ -35,6 +28,8 @@ namespace app
         /// and initialize them as well.
         /// </summary>
         BaseApp app;
+        Button button1;
+        Button button2;
         Texture2D basemap;
         Texture2D wijk2901;
         Texture2D wijk2902;
@@ -113,9 +108,7 @@ namespace app
         Texture2D wijk3137;
 
         // List<object> List_Locations = new List<object>();
-        List <Texture2D> List_wijk_images = new List <Texture2D> ();
-
-
+        List<Texture2D> List_wijk_images = new List<Texture2D>();
 
         protected override void Initialize()
         {
@@ -129,7 +122,6 @@ namespace app
             LoadContent();
             base.Initialize();
         }
-
         /// <summary>
         /// LoadContent will be called once per game and is the place to load
         /// all of your content.
@@ -141,7 +133,6 @@ namespace app
 
             // TODO: use this.Content to load your game content here
             basemap = this.Content.Load<Texture2D>("mapje2");
-
             List_wijk_images.Add(this.Content.Load<Texture2D>("2901")); //0
             List_wijk_images.Add(this.Content.Load<Texture2D>("2902")); //1
             List_wijk_images.Add(Content.Load<Texture2D>("2906"));      //2
@@ -217,11 +208,11 @@ namespace app
             List_wijk_images.Add(this.Content.Load<Texture2D>("3135")); //72
             List_wijk_images.Add(this.Content.Load<Texture2D>("3136")); //73
             List_wijk_images.Add(this.Content.Load<Texture2D>("3137")); //74
-
-
-            //List_wijk_images.Add(wijk2901);
-            app = new BaseApp(basemap, List_wijk_images,100);
-            
+            app = new BaseApp(basemap, List_wijk_images, 100);
+            Texture2D button1texture = this.Content.Load<Texture2D>("button 1");
+            Texture2D button2texture = this.Content.Load<Texture2D>("button 2");
+            this.button1 = new Button("button 1", button1texture, 1000, 30);
+            this.button2 = new Button("button 2", button2texture, 1000, 70);
         }
         
         /// <summary>
@@ -242,9 +233,13 @@ namespace app
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
-
+            float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
             // TODO: Add your update logic here
-            app.Update((float) gameTime.ElapsedGameTime.TotalSeconds);
+            if(this.button1 != null && this.button2 != null)
+            {
+                this.button1.Update(dt);
+                this.button2.Update(dt);
+            }
             base.Update(gameTime);
         }
 
@@ -258,6 +253,11 @@ namespace app
             spriteBatch.Begin();
             // TODO: Add your drawing code here
             app.Draw(spriteBatch);
+            if (this.button1 != null && this.button2 != null)
+            {
+                this.button1.Draw(spriteBatch);
+                this.button2.Draw(spriteBatch);
+            }
             base.Draw(gameTime);
             spriteBatch.End();
         }

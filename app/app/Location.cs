@@ -32,7 +32,7 @@ public class Location
         FROM Wijk
         WHERE post_code = this.Postcode;
     }*/
- 
+
     public void Draw(SpriteBatch spritebatch)
     {
         spritebatch.Draw(this.Image, this.Position, this.Color);
@@ -40,31 +40,31 @@ public class Location
     public void Update(float dt)
     {
         float A;
-        A = ((this.budget/this.WOZ)*100);
-       
-       
+        A = ((this.budget / this.WOZ) * 100);
 
-        if (A>80 && A<=120 )
+
+
+        if (A > 80 && A <= 120)
         {
             // groen
             this.Color = Color.Green;
         }
-        else if ( A>60 & A<=80 | A>120 & A<=140 )
+        else if (A > 60 & A <= 80 | A > 120 & A <= 140)
         {
             // geelgroen
             this.Color = Color.YellowGreen;
         }
-        else if (A>40 & A<=60 | A>140 & A<=160)
+        else if (A > 40 & A <= 60 | A > 140 & A <= 160)
         {
             //geel
             this.Color = Color.Yellow;
         }
-        else if (A>20 & A <=40 | A>160 & A <=180)
+        else if (A > 20 & A <= 40 | A > 160 & A <= 180)
         {
             //oranje
             this.Color = Color.Orange;
         }
-        else if (A<=20 | A<180)
+        else if (A <= 20 | A < 180)
         {
             //red
             this.Color = Color.Red;
@@ -73,7 +73,7 @@ public class Location
         {
             this.Color = Color.Purple;
         }
-        
+
 
     }
 }
