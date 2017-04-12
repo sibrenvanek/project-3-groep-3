@@ -1,7 +1,12 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Microsoft.Xna.Framework.Input;
+
 
 namespace app
 {
@@ -13,10 +18,14 @@ namespace app
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
+
+        
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+            
         }
 
         /// <summary>
@@ -102,6 +111,12 @@ namespace app
         Texture2D wijk3135;
         Texture2D wijk3136;
         Texture2D wijk3137;
+
+        // List<object> List_Locations = new List<object>();
+        List <Texture2D> List_wijk_images = new List <Texture2D> ();
+
+
+
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
@@ -126,82 +141,86 @@ namespace app
 
             // TODO: use this.Content to load your game content here
             basemap = this.Content.Load<Texture2D>("mapje2");
-            wijk2901 = this.Content.Load<Texture2D>("2901");
-            wijk2902 = this.Content.Load<Texture2D>("2902");
-            wijk2906 = this.Content.Load<Texture2D>("2906");
-            wijk2907 = this.Content.Load<Texture2D>("2907");
-            wijk2909 = this.Content.Load<Texture2D>("2909");
-            wijk2987 = this.Content.Load<Texture2D>("2987");
-            wijk3012_2011 = this.Content.Load<Texture2D>("3012 en 2011");
-            wijk3013_3033_3032 = this.Content.Load<Texture2D>("3013 en 3033 en 3032");
-            wijk3014_3015 = this.Content.Load<Texture2D>("3014 en 3015");
-            wijk3016 = this.Content.Load<Texture2D>("3016");
-            wijk3021 = this.Content.Load<Texture2D>("3021");
-            wijk3022 = this.Content.Load<Texture2D>("3022");
-            wijk3023 = this.Content.Load<Texture2D>("3023");
-            wijk3024 = this.Content.Load<Texture2D>("3024");
-            wijk3025 = this.Content.Load<Texture2D>("3025");
-            wijk3026 = this.Content.Load<Texture2D>("3026");
-            wijk3027 = this.Content.Load<Texture2D>("3027");
-            wijk3028 = this.Content.Load<Texture2D>("3028");
-            wijk3029 = this.Content.Load<Texture2D>("3029");
-            wijk3031 = this.Content.Load<Texture2D>("3031");
-            wijk3034 = this.Content.Load<Texture2D>("3034");
-            wijk3036_3035 = this.Content.Load<Texture2D>("3036 en 3035");
-            wijk3038_3037 = this.Content.Load<Texture2D>("3038 en 3037");
-            wijk3039 = this.Content.Load<Texture2D>("3039");
-            wijk3042_3041 = this.Content.Load<Texture2D>("3042 en 3041");
-            wijk3043 = this.Content.Load<Texture2D>("3043");
-            wijk3044 = this.Content.Load<Texture2D>("3044");
-            wijk3045 = this.Content.Load<Texture2D>("3045");
-            wijk3051 = this.Content.Load<Texture2D>("3051");
-            wijk3052_3053 = this.Content.Load<Texture2D>("3052 en 3053");
-            wijk3054 = this.Content.Load<Texture2D>("3054");
-            wijk3055 = this.Content.Load<Texture2D>("3055");
-            wijk3056 = this.Content.Load<Texture2D>("3056");
-            wijk3061 = this.Content.Load<Texture2D>("3061");
-            wijk3062 = this.Content.Load<Texture2D>("3062");
-            wijk3063 = this.Content.Load<Texture2D>("3063");
-            wijk3064 = this.Content.Load<Texture2D>("3064");
-            wijk3065 = this.Content.Load<Texture2D>("3065");
-            wijk3066 = this.Content.Load<Texture2D>("3066");
-            wijk3067 = this.Content.Load<Texture2D>("3067");
-            wijk3068 = this.Content.Load<Texture2D>("3068");
-            wijk3069 = this.Content.Load<Texture2D>("3069");
-            wijk3071 = this.Content.Load<Texture2D>("3071");
-            wijk3072 = this.Content.Load<Texture2D>("3072");
-            wijk3073 = this.Content.Load<Texture2D>("3073");
-            wijk3074 = this.Content.Load<Texture2D>("3074");
-            wijk3075 = this.Content.Load<Texture2D>("3075");
-            wijk3076 = this.Content.Load<Texture2D>("3076");
-            wijk3077 = this.Content.Load<Texture2D>("3077");
-            wijk3078 = this.Content.Load<Texture2D>("3078");
-            wijk3079 = this.Content.Load<Texture2D>("3079");
-            wijk3081 = this.Content.Load<Texture2D>("3081");
-            wijk3082 = this.Content.Load<Texture2D>("3082");
-            wijk3083 = this.Content.Load<Texture2D>("3083");
-            wijk3084 = this.Content.Load<Texture2D>("3084");
-            wijk3085 = this.Content.Load<Texture2D>("3085");
-            wijk3086 = this.Content.Load<Texture2D>("3086");
-            wijk3089_3087_3088 = this.Content.Load<Texture2D>("3089 en 3087 en 3088");
-            wijk3111 = this.Content.Load<Texture2D>("3111");
-            wijk3112 = this.Content.Load<Texture2D>("3112");
-            wijk3113 = this.Content.Load<Texture2D>("3113");
-            wijk3114 = this.Content.Load<Texture2D>("3114");
-            wijk3115 = this.Content.Load<Texture2D>("3115");
-            wijk3115_2 = this.Content.Load<Texture2D>("3115-2");
-            wijk3116 = this.Content.Load<Texture2D>("3116");
-            wijk3117 = this.Content.Load<Texture2D>("3117");
-            wijk3118 = this.Content.Load<Texture2D>("3118");
-            wijk3119 = this.Content.Load<Texture2D>("3119");
-            wijk3122_3121 = this.Content.Load<Texture2D>("3122 en 3121");
-            wijk3124_3123 = this.Content.Load<Texture2D>("3124 en 3123");
-            wijk3129 = this.Content.Load<Texture2D>("3129");
-            wijk3134 = this.Content.Load<Texture2D>("3134");
-            wijk3135 = this.Content.Load<Texture2D>("3135");
-            wijk3136 = this.Content.Load<Texture2D>("3136");
-            wijk3137 = this.Content.Load<Texture2D>("3137");
-            app = new BaseApp(basemap, wijk2901);
+
+            List_wijk_images.Add(this.Content.Load<Texture2D>("2901")); //0
+            List_wijk_images.Add(this.Content.Load<Texture2D>("2902")); //1
+            List_wijk_images.Add(Content.Load<Texture2D>("2906"));      //2
+            List_wijk_images.Add(this.Content.Load<Texture2D>("2907")); //3
+            List_wijk_images.Add(this.Content.Load<Texture2D>("2909")); //4
+            List_wijk_images.Add(this.Content.Load<Texture2D>("2987")); //5
+            List_wijk_images.Add(this.Content.Load<Texture2D>("3012 en 2011")); //6
+            List_wijk_images.Add(this.Content.Load<Texture2D>("3013 en 3033 en 3032")); //7
+            List_wijk_images.Add(this.Content.Load<Texture2D>("3014 en 3015")); //8
+            List_wijk_images.Add(this.Content.Load<Texture2D>("3016")); //9
+            List_wijk_images.Add(this.Content.Load<Texture2D>("3021")); //10
+            List_wijk_images.Add(this.Content.Load<Texture2D>("3022")); //11
+            List_wijk_images.Add(this.Content.Load<Texture2D>("3023")); //12
+            List_wijk_images.Add(this.Content.Load<Texture2D>("3024")); //13
+            List_wijk_images.Add(this.Content.Load<Texture2D>("3025")); //14
+            List_wijk_images.Add(this.Content.Load<Texture2D>("3026")); //15
+            List_wijk_images.Add(this.Content.Load<Texture2D>("3027")); //16
+            List_wijk_images.Add(this.Content.Load<Texture2D>("3028")); //17
+            List_wijk_images.Add(this.Content.Load<Texture2D>("3029")); //18
+            List_wijk_images.Add(this.Content.Load<Texture2D>("3031")); //19
+            List_wijk_images.Add(this.Content.Load<Texture2D>("3034")); //20
+            List_wijk_images.Add(this.Content.Load<Texture2D>("3036 en 3035")); //21
+            List_wijk_images.Add(this.Content.Load<Texture2D>("3038 en 3037")); //22
+            List_wijk_images.Add(this.Content.Load<Texture2D>("3039")); //23
+            List_wijk_images.Add(this.Content.Load<Texture2D>("3042 en 3041")); //24
+            List_wijk_images.Add(this.Content.Load<Texture2D>("3043")); //25
+            List_wijk_images.Add(this.Content.Load<Texture2D>("3044")); //26
+            List_wijk_images.Add(this.Content.Load<Texture2D>("3045")); //27
+            List_wijk_images.Add(this.Content.Load<Texture2D>("3051")); //28
+            List_wijk_images.Add(this.Content.Load<Texture2D>("3052 en 3053")); //29
+            List_wijk_images.Add(this.Content.Load<Texture2D>("3054")); //30
+            List_wijk_images.Add(this.Content.Load<Texture2D>("3055")); //31
+            List_wijk_images.Add(this.Content.Load<Texture2D>("3056")); //32
+            List_wijk_images.Add(this.Content.Load<Texture2D>("3061")); //33
+            List_wijk_images.Add(this.Content.Load<Texture2D>("3062")); //34
+            List_wijk_images.Add(this.Content.Load<Texture2D>("3063")); //35
+            List_wijk_images.Add(this.Content.Load<Texture2D>("3064")); //36
+            List_wijk_images.Add(this.Content.Load<Texture2D>("3065")); //37
+            List_wijk_images.Add(this.Content.Load<Texture2D>("3066")); //38
+            List_wijk_images.Add(this.Content.Load<Texture2D>("3067")); //39
+            List_wijk_images.Add(this.Content.Load<Texture2D>("3068")); //40
+            List_wijk_images.Add(this.Content.Load<Texture2D>("3069")); //41
+            List_wijk_images.Add(this.Content.Load<Texture2D>("3071")); //42
+            List_wijk_images.Add(this.Content.Load<Texture2D>("3072")); //43
+            List_wijk_images.Add(this.Content.Load<Texture2D>("3073")); //44
+            List_wijk_images.Add(this.Content.Load<Texture2D>("3074")); //45
+            List_wijk_images.Add(this.Content.Load<Texture2D>("3075")); //46
+            List_wijk_images.Add(this.Content.Load<Texture2D>("3076")); //47
+            List_wijk_images.Add(this.Content.Load<Texture2D>("3077")); //48
+            List_wijk_images.Add(this.Content.Load<Texture2D>("3078")); //49
+            List_wijk_images.Add(this.Content.Load<Texture2D>("3079")); //50
+            List_wijk_images.Add(this.Content.Load<Texture2D>("3081")); //51
+            List_wijk_images.Add(this.Content.Load<Texture2D>("3082")); //52
+            List_wijk_images.Add(this.Content.Load<Texture2D>("3083")); //53
+            List_wijk_images.Add(this.Content.Load<Texture2D>("3084")); //54
+            List_wijk_images.Add(this.Content.Load<Texture2D>("3085")); //55
+            List_wijk_images.Add(this.Content.Load<Texture2D>("3086")); //56
+            List_wijk_images.Add(this.Content.Load<Texture2D>("3089 en 3087 en 3088")); //57
+            List_wijk_images.Add(this.Content.Load<Texture2D>("3111")); //58
+            List_wijk_images.Add(this.Content.Load<Texture2D>("3112")); //59
+            List_wijk_images.Add(this.Content.Load<Texture2D>("3113")); //60
+            List_wijk_images.Add(this.Content.Load<Texture2D>("3114")); //61
+            List_wijk_images.Add(this.Content.Load<Texture2D>("3115")); //62
+            List_wijk_images.Add(this.Content.Load<Texture2D>("3115-2")); //63
+            List_wijk_images.Add(this.Content.Load<Texture2D>("3116")); //64
+            List_wijk_images.Add(this.Content.Load<Texture2D>("3117")); //65
+            List_wijk_images.Add(this.Content.Load<Texture2D>("3118")); //66
+            List_wijk_images.Add(this.Content.Load<Texture2D>("3119")); //67
+            List_wijk_images.Add(this.Content.Load<Texture2D>("3122 en 3121")); //68
+            List_wijk_images.Add(this.Content.Load<Texture2D>("3124 en 3123")); //69
+            List_wijk_images.Add(this.Content.Load<Texture2D>("3129")); //70
+            List_wijk_images.Add(this.Content.Load<Texture2D>("3134")); //71
+            List_wijk_images.Add(this.Content.Load<Texture2D>("3135")); //72
+            List_wijk_images.Add(this.Content.Load<Texture2D>("3136")); //73
+            List_wijk_images.Add(this.Content.Load<Texture2D>("3137")); //74
+
+
+            //List_wijk_images.Add(wijk2901);
+            app = new BaseApp(basemap, List_wijk_images,100);
             
         }
         

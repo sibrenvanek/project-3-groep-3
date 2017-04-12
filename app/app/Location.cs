@@ -6,15 +6,16 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
+
 public class Location
 {
     string Name, Postcode;
-    int WOZ=100;
+    float WOZ;
     Texture2D Image;
     Color Color;
     Vector2 Position;
-    int budget=70;
-    public Location(string name, string postcode, Texture2D image, int budget)
+    float budget;
+    public Location(string name, string postcode, Texture2D image, float budget)
     {
         this.Name = name;
         this.Postcode = postcode;
@@ -22,6 +23,7 @@ public class Location
         this.Color = Color.Blue;
         this.Position = new Vector2(0, 0);
         this.budget = budget;
+        this.WOZ = 100;
         //this.WOZ = getWOZ();
     }/*
     public int getWOZ()
@@ -37,30 +39,32 @@ public class Location
     }
     public void Update(float dt)
     {
-        int A;
+        float A;
         A = ((this.budget/this.WOZ)*100);
+       
+       
 
-        if (A>80 & A<=120 )
+        if (A>80 && A<=120 )
         {
             // groen
             this.Color = Color.Green;
         }
-        else if ( A>60 & A<=80 || A>120 & A<=140 )
+        else if ( A>60 & A<=80 | A>120 & A<=140 )
         {
             // geelgroen
             this.Color = Color.YellowGreen;
         }
-        else if (A>40 & A<=60 || A>140 & A<=160)
+        else if (A>40 & A<=60 | A>140 & A<=160)
         {
             //geel
             this.Color = Color.Yellow;
         }
-        else if (A>20 & A <=40 || A>160 & A <=180)
+        else if (A>20 & A <=40 | A>160 & A <=180)
         {
             //oranje
             this.Color = Color.Orange;
         }
-        else if (A<=20 || A<180)
+        else if (A<=20 | A<180)
         {
             //red
             this.Color = Color.Red;
