@@ -1,0 +1,62 @@
+class Wijk{
+	public string Wijk_naam {get; set;}
+	public int Post_code {get; set;}
+	public int Woz_waarde {get; set;} 
+	public int Jaartal {get; set:}
+
+	public Wijk(int post_code = "No Postcode",{
+		int woz_waarde = 0,
+		int jaartal = 0,
+		wijk_naam = "No Name")
+
+		Post_code = post_code;
+		Woz_waarde = woz_waarde;
+		Jaartal = jaartal;
+		Wijk_naam = wijk_naam;}
+
+//In the main
+
+static void QueryStringArrayList(){
+	ArrayList Rotterdamwijken = new ArrayList(){
+	new Wijk
+	{Wijk_naam = "Delfshaven",
+	Post_code = 3028,
+	Woz_waarde = 120000,
+	Jaartal = 2009},
+
+	new Wijk
+	{Wijk_naam = "Kralingen-Crooswijk",
+	Post_code = 3062,
+	Woz_waarde = 180000,
+	Jaartal = 2010},
+
+	new Wijk
+	{Wijk_naam = "Stadscentrum",
+	Post_code = 3012,
+	Woz_waarde = 191000,
+	Jaartal = 2011},
+
+	new Wijk
+	{Wijk_naam = "Charlois",
+	Post_code = 3086,
+	Woz_waarde = 107000,
+	Jaartal = 2012},
+
+	new Wijk
+	{Wijk_naam = "Delfshaven",
+	Post_code = 3028,
+	Woz_waarde = 125000,
+	Jaartal = 2013},
+
+	new Wijk
+	{Wijk_naam = "Kralingen-Crooswijk",
+	Post_code = 3062,
+	Woz_waarde = 172000,
+	Jaartal = 2014},
+
+	new Wijk
+	{Wijk_naam = "Stadscentrum",
+	Post_code = 3012,
+	Woz_waarde 167000,
+	Jaartal = 2015}
+      }
