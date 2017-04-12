@@ -42,6 +42,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="BaseApp.cs" />
+    <Compile Include="Location.cs" />
+    <Compile Include="Button.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
