@@ -22,12 +22,10 @@ namespace app
         public BaseApp(Texture2D background, List<Texture2D> List_wijk_image, int budget)
         {
             this.Background = background;
-
-
-
+            
             List_Locations.Add(new Location("wijk2901", "2901", List_wijk_image[0], budget));
-            List_Locations.Add(new Location("wijk2901", "2902", List_wijk_image[1], budget));
-            List_Locations.Add(new Location("wijk2901", "2906", List_wijk_image[2], budget));
+            List_Locations.Add(new Location("wijk2901", "2902", List_wijk_image[1], 80));
+            List_Locations.Add(new Location("wijk2901", "2906", List_wijk_image[2], 130));
             List_Locations.Add(new Location("wijk2901", "2907", List_wijk_image[3], 200));
             List_Locations.Add(new Location("wijk2901", "2987", List_wijk_image[4], budget));
             List_Locations.Add(new Location("wijk2901", "3012 en 2011", List_wijk_image[5], budget));

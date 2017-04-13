@@ -106,7 +106,16 @@ namespace app
         Texture2D wijk3135;
         Texture2D wijk3136;
         Texture2D wijk3137;
-
+        Texture2D rect;
+        Texture2D rect2;
+        Texture2D rectback1;
+        Texture2D rectback2;
+        Texture2D rectback3;
+        Texture2D rectback4;
+        Texture2D rectback5;
+        Texture2D rectback6;
+        Texture2D rectback7;
+        DBConnect DBConnection;
         // List<object> List_Locations = new List<object>();
         List<Texture2D> List_wijk_images = new List<Texture2D>();
 
@@ -119,7 +128,7 @@ namespace app
             graphics.ApplyChanges();
             Window.AllowUserResizing = true;
             this.IsMouseVisible = true;
-            LoadContent();
+            DBConnection = new DBConnect();
             base.Initialize();
         }
         /// <summary>
@@ -208,11 +217,29 @@ namespace app
             List_wijk_images.Add(this.Content.Load<Texture2D>("3135")); //72
             List_wijk_images.Add(this.Content.Load<Texture2D>("3136")); //73
             List_wijk_images.Add(this.Content.Load<Texture2D>("3137")); //74
+
+            rect = new Texture2D(graphics.GraphicsDevice, 80, 30);
+            Color[] data = new Color[80 * 30];
+            for (int i = 0; i < data.Length; ++i) data[i] = Color.Chocolate;
+            rect.SetData(data);
+            Vector2 coor = new Vector2(10, 20);
+            rect2 = new Texture2D(graphics.GraphicsDevice, 80, 30);
+            for (int i = 0; i < data.Length; ++i) data[i] = Color.Black;
+            rect2.SetData(data);
+            Color[] databack = new Color[graphics.PreferredBackBufferWidth * graphics.PreferredBackBufferHeight / 7];
+            rectback1 = new Texture2D(graphics.GraphicsDevice, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight / 7);
+            rectback2 = new Texture2D(graphics.GraphicsDevice, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight / 7);
+            rectback3 = new Texture2D(graphics.GraphicsDevice, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight / 7);
+            rectback4 = new Texture2D(graphics.GraphicsDevice, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight / 7);
+            rectback5 = new Texture2D(graphics.GraphicsDevice, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight / 7);
+            rectback6 = new Texture2D(graphics.GraphicsDevice, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight / 7);
+            rectback7 = new Texture2D(graphics.GraphicsDevice, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight / 7);
             app = new BaseApp(basemap, List_wijk_images, 100);
             Texture2D button1texture = this.Content.Load<Texture2D>("button 1");
             Texture2D button2texture = this.Content.Load<Texture2D>("button 2");
-            this.button1 = new Button("button 1", button1texture, 1000, 30);
-            this.button2 = new Button("button 2", button2texture, 1000, 70);
+            this.button1 = new Button("button 1", rect, 1000, 30);
+            this.button2 = new Button("button 2", rect2, 1000, 70);
+            DBConnection.Insert();
         }
         
         /// <summary>
@@ -235,6 +262,7 @@ namespace app
                 Exit();
             float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
             // TODO: Add your update logic here
+            app.Update(dt);
             if(this.button1 != null && this.button2 != null)
             {
                 this.button1.Update(dt);
