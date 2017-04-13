@@ -8,10 +8,11 @@ using System.Threading.Tasks;
 using app;
 using Microsoft.Xna.Framework.Input;
 
+
 namespace app
 {
     
-    public class Button
+    public class Button :Game
     {
         int buttonX, buttonY;
         string Name;
@@ -19,6 +20,7 @@ namespace app
         bool isClicked;
         bool isHovered;
         Vector2 Position;
+        SpriteFont font ;
 
         public int ButtonX
         {
@@ -36,13 +38,18 @@ namespace app
             }
         }
 
-        public Button(string name, Texture2D texture, int buttonX, int buttonY)
+        public Button(string name, Texture2D texture, int buttonX, int buttonY,SpriteFont Font)
         {
             this.Name = name;
             this.Texture = texture;
             this.buttonX = buttonX;
             this.buttonY = buttonY;
             this.Position = new Vector2(this.buttonX, this.buttonY);
+            this.font = Font;
+
+            //Content.RootDirectory = "Content";
+            //Font = Content.Load<SpriteFont>("File");
+
         }
 
         public void Update(float dt)
@@ -50,6 +57,11 @@ namespace app
             var mouseState = Mouse.GetState();
             var mousePoint = new Point(mouseState.X, mouseState.Y);
             var rectangle = new Rectangle(mousePoint.X, mousePoint.Y, this.Texture.Width, this.Texture.Height);
+
+
+            
+
+
 
             if (rectangle.Contains(mousePoint))
             {
@@ -64,10 +76,12 @@ namespace app
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-            if (isHovered)
-                spriteBatch.Draw(this.Texture, this.Position, Color.LightGray);
-            else
-                spriteBatch.Draw(this.Texture, this.Position, Color.White);
+            //if (isHovered)
+            //    spriteBatch.Draw(this.Texture, this.Position, Color.LightGray);
+            //else
+            //    spriteBatch.Draw(this.Texture, this.Position, Color.White);
+            spriteBatch.Draw(this.Texture, this.Position, Color.White);
+            spriteBatch.DrawString(this.font, this.Name, new Vector2(this.buttonX, this.buttonY), Color.Black);
         }
     }
 }
