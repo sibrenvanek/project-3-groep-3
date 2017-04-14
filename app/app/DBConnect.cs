@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -41,6 +41,7 @@ namespace app
             try
             {
                 connection.Open();
+                MessageBox.Show("connection opened");
                 return true;
             }
             catch (MySqlException ex)
@@ -60,6 +61,7 @@ namespace app
                         MessageBox.Show("Invalid username/password, please try again");
                         break;
                 }
+                MessageBox.Show("connection not opened");
                 return false;
             }
         }
@@ -79,11 +81,15 @@ namespace app
             }
         }
         //Insert statement
-        public void Insert()
+        public void Insert(string query)
         {
-            OpenConnection();
-            //query here
-            CloseConnection();
+            if (this.OpenConnection())
+            {
+                MessageBox.Show("hi");
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                cmd.ExecuteNonQuery();
+                CloseConnection();
+            }
         }
 
         //Update statement
@@ -99,7 +105,13 @@ namespace app
         //Select statement
         public List<string>[] Select()
         {
-            throw new NotImplementedException();
+            if (this.OpenConnection())
+            {
+                MySqlCommand cmd = new MySqlCommand("Select * FROM Wijk", connection);
+                MessageBox.Show(Convert.ToString(cmd.ExecuteNonQuery()));
+                CloseConnection();
+            }
+            return null;
         }
 
         //Count statement
