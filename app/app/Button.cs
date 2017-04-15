@@ -21,6 +21,10 @@ namespace app
         bool isHovered;
         Vector2 Position;
         SpriteFont font ;
+        //Color Color;
+        int WOZ;
+        int budget;
+        float A;
 
         public int ButtonX
         {
@@ -38,6 +42,7 @@ namespace app
             }
         }
 
+
         public Button(string name, Texture2D texture, int buttonX, int buttonY,SpriteFont Font)
         {
             this.Name = name;
@@ -46,14 +51,18 @@ namespace app
             this.buttonY = buttonY;
             this.Position = new Vector2(this.buttonX, this.buttonY);
             this.font = Font;
+            //this.Color = Color.Purple;
 
-            //Content.RootDirectory = "Content";
-            //Font = Content.Load<SpriteFont>("File");
+            
+
+           
 
         }
 
         public void Update(float dt)
         {
+            
+
             var mouseState = Mouse.GetState();
             var mousePoint = new Point(mouseState.X, mouseState.Y);
             var rectangle = new Rectangle(mousePoint.X, mousePoint.Y, this.Texture.Width, this.Texture.Height);
@@ -73,15 +82,23 @@ namespace app
                 isHovered = false;
                 isClicked = false;
             }
+
+            
+
+
+
+
+
+            
         }
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch,Color Color)
         {
-            //if (isHovered)
-            //    spriteBatch.Draw(this.Texture, this.Position, Color.LightGray);
-            //else
-            //    spriteBatch.Draw(this.Texture, this.Position, Color.White);
-            spriteBatch.Draw(this.Texture, this.Position, Color.White);
-            spriteBatch.DrawString(this.font, this.Name, new Vector2(this.buttonX, this.buttonY), Color.Black);
+
+
+            spriteBatch.Draw(this.Texture, this.Position, Color);
+            spriteBatch.DrawString(this.font, this.Name, this.Position, Color.Black);
+            
+
         }
     }
 }

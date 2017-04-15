@@ -135,7 +135,7 @@ namespace app
             List_wijk_images.Add(this.Content.Load<Texture2D>("3113")); //60
             List_wijk_images.Add(this.Content.Load<Texture2D>("3114")); //61
             List_wijk_images.Add(this.Content.Load<Texture2D>("3115")); //62
-            List_wijk_images.Add(this.Content.Load<Texture2D>("3115-2")); //63
+         //   List_wijk_images.Add(this.Content.Load<Texture2D>("3115-2")); //63
             List_wijk_images.Add(this.Content.Load<Texture2D>("3116")); //64
             List_wijk_images.Add(this.Content.Load<Texture2D>("3117")); //65
             List_wijk_images.Add(this.Content.Load<Texture2D>("3118")); //66
@@ -146,61 +146,35 @@ namespace app
             List_wijk_images.Add(this.Content.Load<Texture2D>("3134")); //71
             List_wijk_images.Add(this.Content.Load<Texture2D>("3135")); //72
             List_wijk_images.Add(this.Content.Load<Texture2D>("3136")); //73
-            List_wijk_images.Add(this.Content.Load<Texture2D>("3137")); //74
+            List_wijk_images.Add(this.Content.Load<Texture2D>("3137")); //74 everything minus 1 till 63"
 
             rect = new Texture2D(graphics.GraphicsDevice, 80, 30);
             Color[] data = new Color[80 * 30];
-            for (int i = 0; i < data.Length; ++i) data[i] = Color.Chocolate;
+            for (int i = 0; i < data.Length; ++i) data[i] = Color.Azure;
             rect.SetData(data);
-            Vector2 coor = new Vector2(10, 20);
-            rect2 = new Texture2D(graphics.GraphicsDevice, 80, 30);
-            for (int i = 0; i < data.Length; ++i) data[i] = Color.Black;
-            rect2.SetData(data);
-            Color[] databack = new Color[graphics.PreferredBackBufferWidth * graphics.PreferredBackBufferHeight / 7];
-            rectback1 = new Texture2D(graphics.GraphicsDevice, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight / 7);
-            rectback2 = new Texture2D(graphics.GraphicsDevice, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight / 7);
-            rectback3 = new Texture2D(graphics.GraphicsDevice, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight / 7);
-            rectback4 = new Texture2D(graphics.GraphicsDevice, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight / 7);
-            rectback5 = new Texture2D(graphics.GraphicsDevice, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight / 7);
-            rectback6 = new Texture2D(graphics.GraphicsDevice, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight / 7);
-            rectback7 = new Texture2D(graphics.GraphicsDevice, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight / 7);
 
 
-            //List_Buttons.Add(new Button("button 1", rect, 1000, 30));
-            //List_Buttons.Add(new Button("button 2", rect, 1200, 30));
+            //Vector2 coor = new Vector2(10, 20);
+            //rect2 = new Texture2D(graphics.GraphicsDevice, 80, 30);
+            //for (int i = 0; i < data.Length; ++i) data[i] = Color.Black;
+            //rect2.SetData(data);
+            //Color[] databack = new Color[graphics.PreferredBackBufferWidth * graphics.PreferredBackBufferHeight / 7];
+            //rectback1 = new Texture2D(graphics.GraphicsDevice, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight / 7);
+            //rectback2 = new Texture2D(graphics.GraphicsDevice, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight / 7);
+            //rectback3 = new Texture2D(graphics.GraphicsDevice, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight / 7);
+            //rectback4 = new Texture2D(graphics.GraphicsDevice, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight / 7);
+            //rectback5 = new Texture2D(graphics.GraphicsDevice, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight / 7);
+            //rectback6 = new Texture2D(graphics.GraphicsDevice, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight / 7);
+            //rectback7 = new Texture2D(graphics.GraphicsDevice, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight / 7);
 
 
-            //string name_button = "button1";
-            //int counter = 0;
-            //int counter2 = 0;
-            //int X_pos = 900;
-            //int Y_pos = 20;
-
-
-            //while (counter <= 75)
-            //{
-
-            //    X_pos = X_pos + 100;
-            //    Y_pos = 20;
-            //    counter = counter + 1;
-            //    counter2 = 0;
-
-            //    while (counter2 <= 19)
-            //    {
-            //        List_Buttons.Add(new Button(name_button, rect, X_pos, Y_pos,Font));
-            //        counter2 = counter2 + 1;
-            //        Y_pos = Y_pos + 50;
-
-            //    }
-
-            //}
+            
 
 
             Font = Content.Load<SpriteFont>("File");
             app = new BaseApp(basemap, List_wijk_images,Font,rect, 100);
 
-            //Texture2D button1texture = this.Content.Load<Texture2D>("button 1");
-            //Texture2D button2texture = this.Content.Load<Texture2D>("button 2");
+           
 
 
             DBConnection.Insert();
@@ -229,11 +203,7 @@ namespace app
             float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
             // TODO: Add your update logic here
             app.Update(dt);
-            //if(this.button1 != null && this.button2 != null)
-            //{
-            //    this.button1.Update(dt);
-            //    this.button2.Update(dt);
-            //}
+           
             base.Update(gameTime);
         }
 
@@ -248,12 +218,7 @@ namespace app
             // TODO: Add your drawing code here
            
             app.Draw(spriteBatch);
-            spriteBatch.DrawString(Font, "Test_button1", new Vector2(1200, 400), Color.Black);
-            if (this.button1 != null && this.button2 != null)
-            {
-                this.button1.Draw(spriteBatch);
-                this.button2.Draw(spriteBatch);
-            }
+            
             base.Draw(gameTime);
             spriteBatch.End();
         }

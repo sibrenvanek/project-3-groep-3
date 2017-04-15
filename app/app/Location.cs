@@ -49,7 +49,7 @@ namespace app
             spritebatch.Draw(this.Image, this.Position, this.Color);
 
             //button[ ].Draw();
-            button.Draw(spritebatch);
+            button.Draw(spritebatch,this.Color);
 
 
         }

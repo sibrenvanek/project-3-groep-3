@@ -23,21 +23,28 @@ namespace app
         List<Location> List_Locations = new List<Location>();
         List<string> List_names = new List<string>();
         List<Button> List_Buttons = new List<Button>();
-        //List<object> List_Buttons_Locations = new List<object>();
+
+        int WOZ;
+        int Budget;
         
 
 
         public BaseApp(Texture2D background, List<Texture2D> List_wijk_image,SpriteFont Font,Texture2D rect,int budget)
         {
 
-            List_names.Add("Blaak");
-            List_names.Add("Beurs");
+            
 
-            string name_button = List_names[0];
+            //string name_button = List_names[0];
             int counter = 0;
             int counter2 = 0;
             int X_pos = 900;
             int Y_pos = 20;
+            int i = 0;
+            int WOZ = 100;
+            this.Budget = 100;
+            
+            List_names.Add("blaak");
+            List_names.Add("beurs");
 
 
             while (counter <= 74)
@@ -47,10 +54,16 @@ namespace app
                 Y_pos = 20;
                 counter = counter + 1;
                 counter2 = 0;
+                i = 0;
+                // i = i+1 ;
 
-                while (counter2 <= 19)
+                
+               
+
+                while (counter2 <= 16)
                 {
-                    List_Buttons.Add(new Button(name_button, rect, X_pos, Y_pos, Font));
+                    
+                    List_Buttons.Add(new Button(List_names[0], rect, X_pos, Y_pos, Font));
                     counter2 = counter2 + 1;
                     Y_pos = Y_pos + 50;
 
@@ -58,20 +71,20 @@ namespace app
 
             }
 
-
-
+            
+            
 
 
 
             this.Background = background;
             
-            List_Locations.Add(new Location(List_names[0], "2901", List_wijk_image[0],List_Buttons[0], budget));
-            List_Locations.Add(new Location(List_names[0], "2902", List_wijk_image[1],List_Buttons[1], 80));
-            List_Locations.Add(new Location(List_names[0], "2906", List_wijk_image[2], List_Buttons[2], 130));
-            List_Locations.Add(new Location(List_names[0], "2907", List_wijk_image[3], List_Buttons[3], 200));
-            List_Locations.Add(new Location(List_names[0], "2987", List_wijk_image[4], List_Buttons[4], budget));
-            List_Locations.Add(new Location(List_names[0], "3012 en 2011", List_wijk_image[5], List_Buttons[5], budget));
-            List_Locations.Add(new Location(List_names[0], "3013 en 3033 en 3032", List_wijk_image[6], List_Buttons[6], budget));
+            List_Locations.Add(new Location("Button1.1", "2901", List_wijk_image[0],List_Buttons[0], budget));
+            List_Locations.Add(new Location("Button1.1", "2902", List_wijk_image[1],List_Buttons[1], 80));
+            List_Locations.Add(new Location("Button1.1", "2906", List_wijk_image[2], List_Buttons[2], 130));
+            List_Locations.Add(new Location("Button1.1", "2907", List_wijk_image[3], List_Buttons[3], 200));
+            List_Locations.Add(new Location("Button1.1", "2987", List_wijk_image[4], List_Buttons[4], budget));
+            List_Locations.Add(new Location("Button1.1", "3012 en 2011", List_wijk_image[5], List_Buttons[5], budget));
+            List_Locations.Add(new Location("Button1.1", "3013 en 3033 en 3032", List_wijk_image[6], List_Buttons[6], budget));
             List_Locations.Add(new Location(List_names[0], "2907", List_wijk_image[7], List_Buttons[7], budget));
             List_Locations.Add(new Location(List_names[0], "2907", List_wijk_image[8], List_Buttons[8], budget));
             List_Locations.Add(new Location(List_names[0], "2907", List_wijk_image[9], List_Buttons[9], budget));
@@ -139,12 +152,12 @@ namespace app
             List_Locations.Add(new Location(List_names[0], "2907", List_wijk_image[71], List_Buttons[71], budget));
             List_Locations.Add(new Location(List_names[0], "2907", List_wijk_image[72], List_Buttons[72], budget));
             List_Locations.Add(new Location(List_names[0], "2907", List_wijk_image[73], List_Buttons[73], budget));
-            List_Locations.Add(new Location(List_names[0], "2907", List_wijk_image[74], List_Buttons[74], budget));
+            List_Locations.Add(new Location(List_names[0], "2907", List_wijk_image[73], List_Buttons[73], budget));
 
             // name_button == name wijk , replace both with a name_list
 
-
             
+
         }
         public void Draw(SpriteBatch spriteBatch)
         {
@@ -160,7 +173,7 @@ namespace app
         }
         public void Update(float dt)
         {
-
+            
             foreach (Location loc in List_Locations)
             {
                 loc.Update(dt);
