@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using app;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.VisualBasic;
 
 
 namespace app
@@ -99,6 +100,11 @@ namespace app
             spriteBatch.DrawString(this.font, this.Name, this.Position, Color.Black);
             
 
+        }
+        public int budget_function()
+        {
+            int value =Convert.ToInt32(Interaction.InputBox("test"));
+            return value;
         }
     }
 }

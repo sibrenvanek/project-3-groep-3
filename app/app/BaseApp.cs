@@ -26,7 +26,9 @@ namespace app
 
         int WOZ;
         int Budget;
-        
+        Button Budget_input;
+
+
 
 
         public BaseApp(Texture2D background, List<Texture2D> List_wijk_image,SpriteFont Font,Texture2D rect,int budget)
@@ -71,8 +73,9 @@ namespace app
 
             }
 
-            
-            
+
+            Budget_input = new Button("budget_input", rect, 1300, 500, Font);
+            budget = Budget_input.budget_function();
 
 
 
