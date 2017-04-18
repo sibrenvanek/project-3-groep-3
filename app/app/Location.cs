@@ -21,6 +21,7 @@ namespace app
         Button button;
         bool clicked;
         public bool hasBeenClicked, isClickable;
+        public int Budget;
 
         public Location(string name, string postcode, Texture2D image, Button Button, float budget, Texture2D rect_info)
         {
@@ -61,7 +62,7 @@ namespace app
         {
             this.button.Update(dt);
             float A;
-            A = ((this.budget / this.WOZ) * 100);
+            A = ((this.Budget / this.WOZ) * 100);
             if (A > 80 && A <= 120)
             {
                 // groen
@@ -114,6 +115,7 @@ namespace app
             if (this.button.isClicked)
             {
                 this.clicked = true;
+                
             }
             else if (this.clicked)
             {

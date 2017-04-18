@@ -5,6 +5,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.VisualBasic;
+ 
+
 
 namespace app
 {
@@ -22,8 +25,9 @@ namespace app
         List<Button> List_Buttons = new List<Button>();
         List<string> List_Postcodes;
         //List<object> List_Buttons_Locations = new List<object>();
-
-
+        Button Budget_input;
+        int Budget;
+        bool clicked;
 
         public BaseApp(Texture2D background, List<Texture2D> List_wijk_image, SpriteFont Font, Texture2D rect, int budget, Texture2D rect_info, List<string> List_postcodes)
         {
@@ -52,9 +56,18 @@ namespace app
             }
             this.Background = background;
             Random rnd = new Random();
-            while(counter3 <= 73)
+
+            Budget_input = new Button("Budget_input", rect, 1400, 500, Font);
+
+            //int budget = Budget_input.budget_input();
+
+
+            while (counter3 <= 73)
             {
-                budget = rnd.Next(1, 201);
+
+                
+                
+               // budget = rnd.Next(1, 201);
                 List_Locations.Add(new Location(List_names[0], List_Postcodes[counter3], List_wijk_image[counter3], List_Buttons[counter3], budget, rect_info));
                 counter3++;
             }
@@ -218,6 +231,7 @@ namespace app
             {
                 loc.Draw(spriteBatch);
             }
+            Budget_input.Draw(spriteBatch);
         }
         private void checkClick()
         {
@@ -240,13 +254,37 @@ namespace app
                 loc.isClickable = true;
             }
         }
+        private void Update_budget()
+        {
+            foreach(Location loc in List_Locations)
+            {
+                loc.Budget = Budget;
+            }
+        }
         public void Update(float dt)
         {
+            Budget_input.Update(dt);
+            if (Budget_input.isHovered)
+            {
+                Budget_input.color = Color.LightGray;
+            }
             checkClick();
             foreach (Location loc in List_Locations)
             {
                 loc.Update(dt);
             }
+            if (this.Budget_input.isClicked)
+            {
+                this.clicked = true;
+
+            }
+            else if (this.clicked)
+            {
+                this.clicked = false;
+                Budget = Budget_input.budget_input();
+                Update_budget();
+            }
+            Budget_input.color = Color.White;
             clickReset();
         }
     }

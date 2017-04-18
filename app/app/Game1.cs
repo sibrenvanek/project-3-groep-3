@@ -279,8 +279,9 @@ namespace app
 
             //}
 
-
+            
             Font = Content.Load<SpriteFont>("File");
+
             app = new BaseApp(basemap, List_wijk_images, Font, rect, 100, rect_info, List_Postcodes);
 
             //Texture2D button1texture = this.Content.Load<Texture2D>("button 1");
@@ -328,6 +329,7 @@ namespace app
             spriteBatch.Draw(rectback5, new Vector2(0, 0 + ((graphics.PreferredBackBufferHeight / 7) * 4)), Color.White);
             spriteBatch.Draw(rectback6, new Vector2(0, 0 + ((graphics.PreferredBackBufferHeight / 7) * 5)), Color.White);
             spriteBatch.Draw(rectback7, new Vector2(0, 0 + ((graphics.PreferredBackBufferHeight / 7) * 6)), Color.White);*/
+            
             app.Draw(spriteBatch);
             base.Draw(gameTime);
             spriteBatch.End();
