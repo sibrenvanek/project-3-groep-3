@@ -28,11 +28,9 @@ namespace app
         /// and initialize them as well.
         /// </summary>
         BaseApp app;
-        Button button1;
-        Button button2;
         Texture2D basemap;
         Texture2D rect;
-        Texture2D rect2;
+        Texture2D rect_info;
         Texture2D rectback1;
         Texture2D rectback2;
         Texture2D rectback3;
@@ -41,17 +39,16 @@ namespace app
         Texture2D rectback6;
         Texture2D rectback7;
         DBConnect DBConnection;
-
         SpriteFont Font;
-
         // List<object> List_Locations = new List<object>();
         List<Texture2D> List_wijk_images = new List<Texture2D>();
         //List<object> List_Buttons = new List<object>(); put in Locations
         List<Button> List_Buttons = new List<Button>();
+        List<string> List_Postcodes = new List<string>();
 
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
+            //Add your initialization logic here
             graphics.IsFullScreen = false;
             graphics.PreferredBackBufferWidth = Convert.ToInt32(GraphicsDevice.DisplayMode.Width * 0.9f);
             graphics.PreferredBackBufferHeight = Convert.ToInt32(GraphicsDevice.DisplayMode.Height * 0.9f);
@@ -70,7 +67,7 @@ namespace app
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            // TODO: use this.Content to load your game content here
+            //use this.Content to load your game content here
             basemap = this.Content.Load<Texture2D>("mapje2");
             List_wijk_images.Add(this.Content.Load<Texture2D>("2901")); //0
             List_wijk_images.Add(this.Content.Load<Texture2D>("2902")); //1
@@ -135,60 +132,169 @@ namespace app
             List_wijk_images.Add(this.Content.Load<Texture2D>("3113")); //60
             List_wijk_images.Add(this.Content.Load<Texture2D>("3114")); //61
             List_wijk_images.Add(this.Content.Load<Texture2D>("3115")); //62
-         //   List_wijk_images.Add(this.Content.Load<Texture2D>("3115-2")); //63
-            List_wijk_images.Add(this.Content.Load<Texture2D>("3116")); //64
-            List_wijk_images.Add(this.Content.Load<Texture2D>("3117")); //65
-            List_wijk_images.Add(this.Content.Load<Texture2D>("3118")); //66
-            List_wijk_images.Add(this.Content.Load<Texture2D>("3119")); //67
-            List_wijk_images.Add(this.Content.Load<Texture2D>("3122 en 3121")); //68
-            List_wijk_images.Add(this.Content.Load<Texture2D>("3124 en 3123")); //69
-            List_wijk_images.Add(this.Content.Load<Texture2D>("3129")); //70
-            List_wijk_images.Add(this.Content.Load<Texture2D>("3134")); //71
-            List_wijk_images.Add(this.Content.Load<Texture2D>("3135")); //72
-            List_wijk_images.Add(this.Content.Load<Texture2D>("3136")); //73
-            List_wijk_images.Add(this.Content.Load<Texture2D>("3137")); //74 everything minus 1 till 63"
+            List_wijk_images.Add(this.Content.Load<Texture2D>("3116")); //63
+            List_wijk_images.Add(this.Content.Load<Texture2D>("3117")); //64
+            List_wijk_images.Add(this.Content.Load<Texture2D>("3118")); //65
+            List_wijk_images.Add(this.Content.Load<Texture2D>("3119")); //66
+            List_wijk_images.Add(this.Content.Load<Texture2D>("3122 en 3121")); //67
+            List_wijk_images.Add(this.Content.Load<Texture2D>("3124 en 3123")); //68
+            List_wijk_images.Add(this.Content.Load<Texture2D>("3129")); //69
+            List_wijk_images.Add(this.Content.Load<Texture2D>("3134")); //70
+            List_wijk_images.Add(this.Content.Load<Texture2D>("3135")); //71
+            List_wijk_images.Add(this.Content.Load<Texture2D>("3136")); //72
+            List_wijk_images.Add(this.Content.Load<Texture2D>("3137")); //73
 
-            rect = new Texture2D(graphics.GraphicsDevice, 80, 30);
-            Color[] data = new Color[80 * 30];
-            for (int i = 0; i < data.Length; ++i) data[i] = Color.Azure;
+            List_Postcodes.Add("2901"); //0
+            List_Postcodes.Add("2902"); //1
+            List_Postcodes.Add("2906"); //2
+            List_Postcodes.Add("2907"); //3
+            List_Postcodes.Add("2909"); //4
+            List_Postcodes.Add("2987"); //5
+            List_Postcodes.Add("3012 en 2011"); //6
+            List_Postcodes.Add("3013 en 3033 en 3032"); //7
+            List_Postcodes.Add("3014 en 3015"); //8
+            List_Postcodes.Add("3016"); //9
+            List_Postcodes.Add("3021"); //10
+            List_Postcodes.Add("3022"); //11
+            List_Postcodes.Add("3023"); //12
+            List_Postcodes.Add("3024"); //13
+            List_Postcodes.Add("3025"); //14
+            List_Postcodes.Add("3026"); //15
+            List_Postcodes.Add("3027"); //16
+            List_Postcodes.Add("3028"); //17
+            List_Postcodes.Add("3029"); //18
+            List_Postcodes.Add("3031"); //19
+            List_Postcodes.Add("3034"); //20
+            List_Postcodes.Add("3036 en 3035"); //21
+            List_Postcodes.Add("3038 en 3037"); //22
+            List_Postcodes.Add("3039"); //23
+            List_Postcodes.Add("3042 en 3041"); //24
+            List_Postcodes.Add("3043"); //25
+            List_Postcodes.Add("3044"); //26
+            List_Postcodes.Add("3045"); //27
+            List_Postcodes.Add("3051"); //28
+            List_Postcodes.Add("3052 en 3053"); //29
+            List_Postcodes.Add("3054"); //30
+            List_Postcodes.Add("3055"); //31
+            List_Postcodes.Add("3056"); //32
+            List_Postcodes.Add("3061"); //33
+            List_Postcodes.Add("3062"); //34
+            List_Postcodes.Add("3063"); //35
+            List_Postcodes.Add("3064"); //3
+            List_Postcodes.Add("3065"); //37
+            List_Postcodes.Add("3066"); //38
+            List_Postcodes.Add("3067"); //39
+            List_Postcodes.Add("3068"); //40
+            List_Postcodes.Add("3069"); //41
+            List_Postcodes.Add("3071"); //42
+            List_Postcodes.Add("3072"); //43
+            List_Postcodes.Add("3073"); //44
+            List_Postcodes.Add("3074"); //45
+            List_Postcodes.Add("3075"); //46
+            List_Postcodes.Add("3076"); //47
+            List_Postcodes.Add("3077"); //48
+            List_Postcodes.Add("3078"); //49
+            List_Postcodes.Add("3079"); //50
+            List_Postcodes.Add("3081"); //51
+            List_Postcodes.Add("3082"); //52
+            List_Postcodes.Add("3083"); //53
+            List_Postcodes.Add("3084"); //54
+            List_Postcodes.Add("3085"); //55
+            List_Postcodes.Add("3086"); //56
+            List_Postcodes.Add("3089 en 3087 en 3088"); //57
+            List_Postcodes.Add("3111"); //58
+            List_Postcodes.Add("3112"); //59
+            List_Postcodes.Add("3113"); //60
+            List_Postcodes.Add("3114"); //61
+            List_Postcodes.Add("3115"); //62
+            List_Postcodes.Add("3116"); //63
+            List_Postcodes.Add("3117"); //64
+            List_Postcodes.Add("3118"); //65
+            List_Postcodes.Add("3119"); //66
+            List_Postcodes.Add("3122 en 3121"); //67
+            List_Postcodes.Add("3124 en 3123"); //68
+            List_Postcodes.Add("3129"); //69
+            List_Postcodes.Add("3134"); //70
+            List_Postcodes.Add("3135"); //71
+            List_Postcodes.Add("3136"); //72
+            List_Postcodes.Add("3137"); //73
+
+            rect = new Texture2D(graphics.GraphicsDevice, 100, 30);
+            Color[] data = new Color[100 * 30];
+            for (int i = 0; i < data.Length; ++i) data[i] = Color.White;
             rect.SetData(data);
+            rect_info = new Texture2D(graphics.GraphicsDevice, 278, 500);
+            Color[] data_info = new Color[278 * 500];
+            for (int i = 0; i < data_info.Length; ++i) data_info[i] = Color.White;
+            rect_info.SetData(data_info);
+            int height = graphics.PreferredBackBufferHeight / 7;
+            Color[] databack = new Color[graphics.PreferredBackBufferWidth * height];
+            rectback1 = new Texture2D(graphics.GraphicsDevice, graphics.PreferredBackBufferWidth, height);
+            rectback2 = new Texture2D(graphics.GraphicsDevice, graphics.PreferredBackBufferWidth, height);
+            rectback3 = new Texture2D(graphics.GraphicsDevice, graphics.PreferredBackBufferWidth, height);
+            rectback4 = new Texture2D(graphics.GraphicsDevice, graphics.PreferredBackBufferWidth, height);
+            rectback5 = new Texture2D(graphics.GraphicsDevice, graphics.PreferredBackBufferWidth, height);
+            rectback6 = new Texture2D(graphics.GraphicsDevice, graphics.PreferredBackBufferWidth, height);
+            rectback7 = new Texture2D(graphics.GraphicsDevice, graphics.PreferredBackBufferWidth, height);
+            for (int i = 0; i < databack.Length; ++i) databack[i] = Color.Crimson;
+            rectback1.SetData(databack);
+            for (int i = 0; i < databack.Length; ++i) databack[i] = Color.OrangeRed;
+            rectback2.SetData(databack);
+            for (int i = 0; i < databack.Length; ++i) databack[i] = Color.Gold;
+            rectback3.SetData(databack);
+            for (int i = 0; i < databack.Length; ++i) databack[i] = Color.Lime;
+            rectback4.SetData(databack);
+            for (int i = 0; i < databack.Length; ++i) databack[i] = Color.Blue;
+            rectback5.SetData(databack);
+            for (int i = 0; i < databack.Length; ++i) databack[i] = Color.Indigo;
+            rectback6.SetData(databack);
+            for (int i = 0; i < databack.Length; ++i) databack[i] = Color.Violet;
+            rectback7.SetData(databack);
+            //List_Buttons.Add(new Button("button 1", rect, 1000, 30));
+            //List_Buttons.Add(new Button("button 2", rect, 1200, 30));
 
 
-            //Vector2 coor = new Vector2(10, 20);
-            //rect2 = new Texture2D(graphics.GraphicsDevice, 80, 30);
-            //for (int i = 0; i < data.Length; ++i) data[i] = Color.Black;
-            //rect2.SetData(data);
-            //Color[] databack = new Color[graphics.PreferredBackBufferWidth * graphics.PreferredBackBufferHeight / 7];
-            //rectback1 = new Texture2D(graphics.GraphicsDevice, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight / 7);
-            //rectback2 = new Texture2D(graphics.GraphicsDevice, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight / 7);
-            //rectback3 = new Texture2D(graphics.GraphicsDevice, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight / 7);
-            //rectback4 = new Texture2D(graphics.GraphicsDevice, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight / 7);
-            //rectback5 = new Texture2D(graphics.GraphicsDevice, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight / 7);
-            //rectback6 = new Texture2D(graphics.GraphicsDevice, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight / 7);
-            //rectback7 = new Texture2D(graphics.GraphicsDevice, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight / 7);
+            //string name_button = "button1";
+            //int counter = 0;
+            //int counter2 = 0;
+            //int X_pos = 900;
+            //int Y_pos = 20;
 
 
-            
+            //while (counter <= 75)
+            //{
+
+            //    X_pos = X_pos + 100;
+            //    Y_pos = 20;
+            //    counter = counter + 1;
+            //    counter2 = 0;
+
+            //    while (counter2 <= 19)
+            //    {
+            //        List_Buttons.Add(new Button(name_button, rect, X_pos, Y_pos,Font));
+            //        counter2 = counter2 + 1;
+            //        Y_pos = Y_pos + 50;
+
+            //    }
+
+            //}
 
 
             Font = Content.Load<SpriteFont>("File");
-            app = new BaseApp(basemap, List_wijk_images,Font,rect, 100);
+            app = new BaseApp(basemap, List_wijk_images, Font, rect, 100, rect_info, List_Postcodes);
 
-           
-
-
-           // DBConnection.Insert();
-
-            
+            //Texture2D button1texture = this.Content.Load<Texture2D>("button 1");
+            //Texture2D button2texture = this.Content.Load<Texture2D>("button 2");
+            //DBConnection.Insert();
         }
-        
+
         /// <summary>
         /// UnloadContent will be called once per game and is the place to unload
         /// game-specific content.
         /// </summary>
         protected override void UnloadContent()
         {
-            // TODO: Unload any non ContentManager content here
+            //Unload any non ContentManager content here
         }
 
         /// <summary>
@@ -201,9 +307,8 @@ namespace app
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
             float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
-            // TODO: Add your update logic here
+            //Add your update logic here
             app.Update(dt);
-           
             base.Update(gameTime);
         }
 
@@ -213,12 +318,17 @@ namespace app
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.AntiqueWhite);
+            GraphicsDevice.Clear(Color.LightGray);
             spriteBatch.Begin();
-            // TODO: Add your drawing code here
-           
+            //Add your drawing code here
+            /*spriteBatch.Draw(rectback1, new Vector2(0, 0), Color.White);
+            spriteBatch.Draw(rectback2, new Vector2(0, 0 + (graphics.PreferredBackBufferHeight / 7)), Color.White);
+            spriteBatch.Draw(rectback3, new Vector2(0, 0 + ((graphics.PreferredBackBufferHeight / 7) * 2)), Color.White);
+            spriteBatch.Draw(rectback4, new Vector2(0, 0 + ((graphics.PreferredBackBufferHeight / 7) * 3)), Color.White);
+            spriteBatch.Draw(rectback5, new Vector2(0, 0 + ((graphics.PreferredBackBufferHeight / 7) * 4)), Color.White);
+            spriteBatch.Draw(rectback6, new Vector2(0, 0 + ((graphics.PreferredBackBufferHeight / 7) * 5)), Color.White);
+            spriteBatch.Draw(rectback7, new Vector2(0, 0 + ((graphics.PreferredBackBufferHeight / 7) * 6)), Color.White);*/
             app.Draw(spriteBatch);
-            
             base.Draw(gameTime);
             spriteBatch.End();
         }

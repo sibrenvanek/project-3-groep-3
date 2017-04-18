@@ -5,11 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using System.Windows.Forms;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using Microsoft.VisualBasic;
-
 
 namespace app
 {
@@ -47,7 +42,6 @@ namespace app
             {
                 connection.Open();
                 MessageBox.Show("connection opened");
-                
                 return true;
             }
             catch (MySqlException ex)
@@ -77,7 +71,6 @@ namespace app
             try
             {
                 MessageBox.Show("connection closed");
-               // Interaction.InputBox("test");
                 connection.Close();
                 return true;
             }

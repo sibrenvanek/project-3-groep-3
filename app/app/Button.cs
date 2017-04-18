@@ -7,25 +7,21 @@ using System.Text;
 using System.Threading.Tasks;
 using app;
 using Microsoft.Xna.Framework.Input;
-using Microsoft.VisualBasic;
-
 
 namespace app
 {
     
-    public class Button :Game
+    public class Button
     {
-        int buttonX, buttonY;
+        int buttonX, buttonY, buttonWidth, buttonHeigth;
         string Name;
         Texture2D Texture;
-        bool isClicked;
-        bool isHovered;
+        public bool isClicked;
+        public bool isHovered;
+        public bool isClickable;
         Vector2 Position;
-        SpriteFont font ;
-        //Color Color;
-        int WOZ;
-        int budget;
-        float A;
+        public Color color;
+        SpriteFont font;
 
         public int ButtonX
         {
@@ -43,68 +39,42 @@ namespace app
             }
         }
 
-
-        public Button(string name, Texture2D texture, int buttonX, int buttonY,SpriteFont Font)
+        public Button(string name, Texture2D texture, int buttonX, int buttonY, SpriteFont font)
         {
             this.Name = name;
             this.Texture = texture;
             this.buttonX = buttonX;
             this.buttonY = buttonY;
+            this.buttonWidth = 100;
+            this.buttonHeigth = 30;
             this.Position = new Vector2(this.buttonX, this.buttonY);
-            this.font = Font;
-            //this.Color = Color.Purple;
-
-            
-
-           
-
+            this.font = font;
+            this.isClickable = true;
         }
 
         public void Update(float dt)
         {
-            
-
             var mouseState = Mouse.GetState();
-            var mousePoint = new Point(mouseState.X, mouseState.Y);
-            var rectangle = new Rectangle(mousePoint.X, mousePoint.Y, this.Texture.Width, this.Texture.Height);
 
-
-            
-
-
-
-            if (rectangle.Contains(mousePoint))
+            if (mouseState.X >= buttonX && mouseState.X < (buttonX + buttonWidth) && mouseState.Y >= buttonY && mouseState.Y < (buttonY + buttonHeigth))
             {
                 isHovered = true;
-                isClicked = mouseState.LeftButton == ButtonState.Pressed;
+                if(isClickable)
+                    isClicked = mouseState.LeftButton == ButtonState.Pressed;
             }
             else
             {
                 isHovered = false;
                 isClicked = false;
             }
-
-            
-
-
-
-
-
-            
         }
-        public void Draw(SpriteBatch spriteBatch,Color Color)
+        public void Draw(SpriteBatch spriteBatch)
         {
-
-
-            spriteBatch.Draw(this.Texture, this.Position, Color);
-            spriteBatch.DrawString(this.font, this.Name, this.Position, Color.Black);
-            
-
-        }
-        public int budget_function()
-        {
-            int value =Convert.ToInt32(Interaction.InputBox("test"));
-            return value;
+            if (isHovered)
+                spriteBatch.Draw(this.Texture, this.Position, this.color);
+            else
+                spriteBatch.Draw(this.Texture, this.Position, this.color);
+            spriteBatch.DrawString(this.font, this.Name, new Vector2(this.buttonX + 5, this.buttonY + 7), Color.Black);
         }
     }
 }

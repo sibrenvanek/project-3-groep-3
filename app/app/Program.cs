@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Windows.Forms;
-
-
 
 namespace app
 {
@@ -17,12 +14,8 @@ namespace app
         [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
-           // Application.SetCompatibleTextRenderingDefault();
-
             using (var game = new Game1())
                 game.Run();
-            //Application.Run(new Form1());
         }
     }
 #endif
