@@ -5,6 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System.Data;
+using System.Data.SqlClient;
+using System.ComponentModel;
+using System.Configuration;
+using Microsoft.VisualBasic;
 
 namespace app
 {
@@ -25,6 +30,9 @@ namespace app
         Info InfoWindow;
         public Location(string name, string postcode, Texture2D image, Button Button, int budget, Texture2D rect_info, SpriteFont font, Texture2D small_rect)
         {
+            dbImp naam_db = new dbImp();
+            naam_db.PopulateTables();
+            this.Name = naam_db.give_reader();
             this.Name = name;
             this.Postcode = postcode;
             this.Image = image;
@@ -36,7 +44,7 @@ namespace app
             this.isClickable = true;
             this.InfoWindow = new Info(name, new Vector2(1300, 10), rect_info, font, small_rect);
 
-
+            //Name = naam_db.name2k();
             //this.WOZ = getWOZ();
         }
     /*
