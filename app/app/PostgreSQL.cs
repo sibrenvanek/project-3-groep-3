@@ -22,8 +22,9 @@ namespace app
                 connection.Open();
                 NpgsqlCommand command = new NpgsqlCommand(query, connection);
                 NpgsqlDataReader dataReader = command.ExecuteReader();
+                string returnValue = dataReader.GetString(0);
                 connection.Close();
-                return dataReader[1].ToString();
+                return returnValue;
             }
             catch (Exception msg)
             {

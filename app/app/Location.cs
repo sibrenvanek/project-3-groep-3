@@ -15,21 +15,21 @@ namespace app
         Texture2D Image, Rect_info;
         Color Color;
         Vector2 Position;
-        float budget;
         List<Button> List_Location_Buttons = new List<Button>();
         //SpriteBatch spriteBatch;
         Button button;
         bool clicked;
         public bool hasBeenClicked, isClickable;
-
-        public Location(string name, string postcode, Texture2D image, Button Button, float budget, Texture2D rect_info)
+        public int Budget;
+        Form1 info = new Form1();
+        public Location(string name, string postcode, Texture2D image, Button Button, int budget, Texture2D rect_info)
         {
             this.Name = name;
             this.Postcode = postcode;
             this.Image = image;
             this.Color = Color.Blue;
             this.Position = new Vector2(0, 0);
-            this.budget = budget;
+            this.Budget = budget;
             this.WOZ = 100;
             this.button = Button;
             this.Rect_info = rect_info;
@@ -61,7 +61,7 @@ namespace app
         {
             this.button.Update(dt);
             float A;
-            A = ((this.budget / this.WOZ) * 100);
+            A = ((this.Budget / this.WOZ) * 100);
             if (A > 80 && A <= 120)
             {
                 // groen
@@ -118,9 +118,15 @@ namespace app
             else if (this.clicked)
             {
                 if (!(this.hasBeenClicked))
+                {
+                    info.Show();
                     this.hasBeenClicked = true;
+                }
                 else if (this.hasBeenClicked)
+                {
+                    info.Hide();
                     this.hasBeenClicked = false;
+                }
                 this.clicked = false;
             }
         }

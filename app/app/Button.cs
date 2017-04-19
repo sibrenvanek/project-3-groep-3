@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using app;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.VisualBasic;
 
 namespace app
 {
@@ -22,7 +23,7 @@ namespace app
         Vector2 Position;
         public Color color;
         SpriteFont font;
-
+        
         public int ButtonX
         {
             get
@@ -75,6 +76,10 @@ namespace app
             else
                 spriteBatch.Draw(this.Texture, this.Position, this.color);
             spriteBatch.DrawString(this.font, this.Name, new Vector2(this.buttonX + 5, this.buttonY + 7), Color.Black);
+        }
+        public int budget_input()
+        {
+            return Convert.ToInt32(Interaction.InputBox("Input Budget"));
         }
     }
 }

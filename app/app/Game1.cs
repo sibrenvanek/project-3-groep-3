@@ -199,8 +199,6 @@ namespace app
             spriteBatch.Draw(rectback6, new Vector2(0, 0 + ((graphics.PreferredBackBufferHeight / 7) * 5)), Color.White);
             spriteBatch.Draw(rectback7, new Vector2(0, 0 + ((graphics.PreferredBackBufferHeight / 7) * 6)), Color.White);*/
             app.Draw(spriteBatch);
-            string woz = PostGreSQL.Select("SELECT woz_waarde FROM wijk WHERE wijk_naam = 'Delftshaven' AND jaartal = 2015;");
-            spriteBatch.DrawString(Font, woz, new Vector2(10, 10), Color.Yellow);
             base.Draw(gameTime);
             spriteBatch.End();
         }
