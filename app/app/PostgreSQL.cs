@@ -17,7 +17,7 @@ namespace app
         {
             try
             {
-                string connstring = "Server=127.0.0.1; Port=5432; User Id = postgres; Password=Iceage3; Database=Rotterdamsewijken;";
+                string connstring = "Server=127.0.0.1; Port=5432; User Id = postgres; Password=schijt123; Database=Rotterdamsewijken;";
                 NpgsqlConnection connection = new NpgsqlConnection(connstring);
                 connection.Open();
                 NpgsqlCommand command = new NpgsqlCommand(query, connection);
