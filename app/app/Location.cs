@@ -17,7 +17,7 @@ namespace app
     {
         string Name, Postcode;
         float WOZ;
-        Texture2D Image;
+        Texture2D Image, Graph;
         Color Color;
         Vector2 Position;
         List<Button> List_Location_Buttons = new List<Button>();
@@ -28,7 +28,7 @@ namespace app
         public int Budget;
         Form1 info = new Form1();
         Info InfoWindow;
-        public Location(string name, string postcode, Texture2D image, Button Button, int budget, Texture2D rect_info, SpriteFont font, Texture2D small_rect)
+        public Location(string name, string postcode, Texture2D image, Button Button, int budget, Texture2D rect_info, SpriteFont font, Texture2D small_rect, Texture2D graph)
         {
             dbImp naam_db = new dbImp();
             naam_db.PopulateTables();
@@ -39,12 +39,17 @@ namespace app
             this.Color = Color.Blue;
             this.Position = new Vector2(0, 0);
             this.Budget = budget;
-            this.WOZ = 100;
+            this.WOZ = data.Woz(this.Name, 2015);
             this.button = Button;
             this.isClickable = true;
             this.InfoWindow = new Info(name, new Vector2(1300, 10), rect_info, font, small_rect);
+<<<<<<< HEAD
+            this.Graph = graph;
+
+=======
 
             //Name = naam_db.name2k();
+>>>>>>> origin/basic-layout-maps
             //this.WOZ = getWOZ();
         }
     /*
@@ -63,6 +68,7 @@ namespace app
             if (this.hasBeenClicked)
             {
                 InfoWindow.Draw(spritebatch);
+                spritebatch.Draw(this.Graph, new Vector2(1100, 550), Color.White);
             }
         }
         public void Update(float dt)

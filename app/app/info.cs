@@ -11,6 +11,9 @@ namespace app
     class Info
     {
         string Name;
+        int WOZ;
+        int? Income;
+        float FamSize, Satisfaction;
         Vector2 Position;
         Texture2D Texture;
         SpriteFont Font;
@@ -23,6 +26,10 @@ namespace app
             this.Position = position;
             this.Texture = texture;
             this.Font = font;
+            this.WOZ = data.Woz(this.Name, 2015);
+            this.Income = data.Income(this.Name, 2015);
+            this.FamSize = data.FamSize(this.Name, 2015);
+            this.Satisfaction = data.Satisfaction(this.Name, 2015);
             this.button2014 = new Button("2014", small_rect, Convert.ToInt32(this.Position.X + 10), Convert.ToInt32(this.Position.Y + 420), Font);
             this.button2013 = new Button("2013", small_rect, Convert.ToInt32(this.Position.X + 120), Convert.ToInt32(this.Position.Y + 420), Font);
             this.button2012 = new Button("2012", small_rect, Convert.ToInt32(this.Position.X + 230), Convert.ToInt32(this.Position.Y + 420), Font);
@@ -47,59 +54,59 @@ namespace app
             spriteBatch.Draw(this.Texture, this.Position, Color.White);
             spriteBatch.DrawString(this.Font, this.Name, this.Position + new Vector2(10, 0), Color.Black);
             spriteBatch.DrawString(this.Font, "2015:", this.Position + new Vector2(10, 30), Color.Black);
-            spriteBatch.DrawString(this.Font, "General real estate value:", this.Position + new Vector2(10, 60), Color.Black);
-            spriteBatch.DrawString(this.Font, "General income:", this.Position + new Vector2(10, 80), Color.Black);
-            spriteBatch.DrawString(this.Font, "average family size:", this.Position + new Vector2(10, 100), Color.Black);
-            spriteBatch.DrawString(this.Font, "satisfaction rating:", this.Position + new Vector2(10, 120), Color.Black);
-            spriteBatch.DrawString(this.Font, "show previous years:", this.Position + new Vector2(10, 400), Color.Black);
+            spriteBatch.DrawString(this.Font, "General real estate value: " + this.WOZ.ToString() + " Euro.", this.Position + new Vector2(10, 60), Color.Black);
+            spriteBatch.DrawString(this.Font, "General income: " + this.Income.ToString() + " Euro.", this.Position + new Vector2(10, 80), Color.Black);
+            spriteBatch.DrawString(this.Font, "Average family size: " + this.FamSize.ToString() + " Persons per family.", this.Position + new Vector2(10, 100), Color.Black);
+            spriteBatch.DrawString(this.Font, "Satisfaction rating: " + this.Satisfaction.ToString() + "%", this.Position + new Vector2(10, 120), Color.Black);
+            spriteBatch.DrawString(this.Font, "Show previous years:", this.Position + new Vector2(10, 400), Color.Black);
 
             if (this.clicked2009)
             {
                 spriteBatch.DrawString(this.Font, "2009:", this.Position + new Vector2(10, 180), Color.Black);
-                spriteBatch.DrawString(this.Font, "General real estate value:", this.Position + new Vector2(10, 210), Color.Black);
-                spriteBatch.DrawString(this.Font, "General income:", this.Position + new Vector2(10, 230), Color.Black);
-                spriteBatch.DrawString(this.Font, "average family size:", this.Position + new Vector2(10, 250), Color.Black);
-                spriteBatch.DrawString(this.Font, "satisfaction rating:", this.Position + new Vector2(10, 270), Color.Black);
+                spriteBatch.DrawString(this.Font, "General real estate value: " + data.Woz(this.Name, 2009).ToString() + " Euro.", this.Position + new Vector2(10, 210), Color.Black);
+                spriteBatch.DrawString(this.Font, "General income: " + data.Income(this.Name, 2009).ToString() + " Euro.", this.Position + new Vector2(10, 230), Color.Black);
+                spriteBatch.DrawString(this.Font, "Average family size: " + data.FamSize(this.Name, 2009).ToString() + " Persons per family.", this.Position + new Vector2(10, 250), Color.Black);
+                spriteBatch.DrawString(this.Font, "Satisfaction rating: " + data.Satisfaction(this.Name, 2009).ToString() + "%", this.Position + new Vector2(10, 270), Color.Black);
             }
             if (this.clicked2010)
             {
                 spriteBatch.DrawString(this.Font, "2010:", this.Position + new Vector2(10, 180), Color.Black);
-                spriteBatch.DrawString(this.Font, "General real estate value:", this.Position + new Vector2(10, 210), Color.Black);
-                spriteBatch.DrawString(this.Font, "General income:", this.Position + new Vector2(10, 230), Color.Black);
-                spriteBatch.DrawString(this.Font, "average family size:", this.Position + new Vector2(10, 250), Color.Black);
-                spriteBatch.DrawString(this.Font, "satisfaction rating:", this.Position + new Vector2(10, 270), Color.Black);
+                spriteBatch.DrawString(this.Font, "General real estate value: " + data.Woz(this.Name, 2010).ToString() + " Euro.", this.Position + new Vector2(10, 210), Color.Black);
+                spriteBatch.DrawString(this.Font, "General income: " + data.Income(this.Name, 2010).ToString() + " Euro.", this.Position + new Vector2(10, 230), Color.Black);
+                spriteBatch.DrawString(this.Font, "Average family size: " + data.FamSize(this.Name, 2010).ToString() + " Persons per family.", this.Position + new Vector2(10, 250), Color.Black);
+                spriteBatch.DrawString(this.Font, "Satisfaction rating: " + data.Satisfaction(this.Name, 2010).ToString() + "%", this.Position + new Vector2(10, 270), Color.Black);
             }
             if (this.clicked2011)
             {
                 spriteBatch.DrawString(this.Font, "2011:", this.Position + new Vector2(10, 180), Color.Black);
-                spriteBatch.DrawString(this.Font, "General real estate value:", this.Position + new Vector2(10, 210), Color.Black);
-                spriteBatch.DrawString(this.Font, "General income:", this.Position + new Vector2(10, 230), Color.Black);
-                spriteBatch.DrawString(this.Font, "average family size:", this.Position + new Vector2(10, 250), Color.Black);
-                spriteBatch.DrawString(this.Font, "satisfaction rating:", this.Position + new Vector2(10, 270), Color.Black);
+                spriteBatch.DrawString(this.Font, "General real estate value: " + data.Woz(this.Name, 2011).ToString() + " Euro.", this.Position + new Vector2(10, 210), Color.Black);
+                spriteBatch.DrawString(this.Font, "General income: " + data.Income(this.Name, 2011).ToString() + " Euro.", this.Position + new Vector2(10, 230), Color.Black);
+                spriteBatch.DrawString(this.Font, "Average family size: " + data.FamSize(this.Name, 2011).ToString() + " Persons per family.", this.Position + new Vector2(10, 250), Color.Black);
+                spriteBatch.DrawString(this.Font, "Satisfaction rating: " + data.Satisfaction(this.Name, 2011).ToString() + "%", this.Position + new Vector2(10, 270), Color.Black);
             }
             if (this.clicked2012)
             {
                 spriteBatch.DrawString(this.Font, "2012:", this.Position + new Vector2(10, 180), Color.Black);
-                spriteBatch.DrawString(this.Font, "General real estate value:", this.Position + new Vector2(10, 210), Color.Black);
-                spriteBatch.DrawString(this.Font, "General income:", this.Position + new Vector2(10, 230), Color.Black);
-                spriteBatch.DrawString(this.Font, "average family size:", this.Position + new Vector2(10, 250), Color.Black);
-                spriteBatch.DrawString(this.Font, "satisfaction rating:", this.Position + new Vector2(10, 270), Color.Black);
+                spriteBatch.DrawString(this.Font, "General real estate value: " + data.Woz(this.Name, 2012).ToString() + " Euro.", this.Position + new Vector2(10, 210), Color.Black);
+                spriteBatch.DrawString(this.Font, "General income: " + data.Income(this.Name, 2012).ToString() + " Euro.", this.Position + new Vector2(10, 230), Color.Black);
+                spriteBatch.DrawString(this.Font, "Average family size: " + data.FamSize(this.Name, 2012).ToString() + " Persons per family.", this.Position + new Vector2(10, 250), Color.Black);
+                spriteBatch.DrawString(this.Font, "Satisfaction rating: " + data.Satisfaction(this.Name, 2012).ToString() + "%", this.Position + new Vector2(10, 270), Color.Black);
             }
             if (this.clicked2013)
             {
                 spriteBatch.DrawString(this.Font, "2013:", this.Position + new Vector2(10, 180), Color.Black);
-                spriteBatch.DrawString(this.Font, "General real estate value:", this.Position + new Vector2(10, 210), Color.Black);
-                spriteBatch.DrawString(this.Font, "General income:", this.Position + new Vector2(10, 230), Color.Black);
-                spriteBatch.DrawString(this.Font, "average family size:", this.Position + new Vector2(10, 250), Color.Black);
-                spriteBatch.DrawString(this.Font, "satisfaction rating:", this.Position + new Vector2(10, 270), Color.Black);
+                spriteBatch.DrawString(this.Font, "General real estate value: " + data.Woz(this.Name, 2013).ToString() + " Euro.", this.Position + new Vector2(10, 210), Color.Black);
+                spriteBatch.DrawString(this.Font, "General income: " + data.Income(this.Name, 2013).ToString() + " Euro.", this.Position + new Vector2(10, 230), Color.Black);
+                spriteBatch.DrawString(this.Font, "Average family size: " + data.FamSize(this.Name, 2013).ToString() + " Persons per family.", this.Position + new Vector2(10, 250), Color.Black);
+                spriteBatch.DrawString(this.Font, "Satisfaction rating: " + data.Satisfaction(this.Name, 2013).ToString() + "%", this.Position + new Vector2(10, 270), Color.Black);
             }
             if (this.clicked2014)
             {
                 spriteBatch.DrawString(this.Font, "2014:", this.Position + new Vector2(10, 180), Color.Black);
-                spriteBatch.DrawString(this.Font, "General real estate value:", this.Position + new Vector2(10, 210), Color.Black);
-                spriteBatch.DrawString(this.Font, "General income:", this.Position + new Vector2(10, 230), Color.Black);
-                spriteBatch.DrawString(this.Font, "average family size:", this.Position + new Vector2(10, 250), Color.Black);
-                spriteBatch.DrawString(this.Font, "satisfaction rating:", this.Position + new Vector2(10, 270), Color.Black);
+                spriteBatch.DrawString(this.Font, "General real estate value: " + data.Woz(this.Name, 2014).ToString() + " Euro.", this.Position + new Vector2(10, 210), Color.Black);
+                spriteBatch.DrawString(this.Font, "General income: " + data.Income(this.Name, 2014).ToString() + " Euro.", this.Position + new Vector2(10, 230), Color.Black);
+                spriteBatch.DrawString(this.Font, "Average family size: " + data.FamSize(this.Name, 2014).ToString() + " Persons per family.", this.Position + new Vector2(10, 250), Color.Black);
+                spriteBatch.DrawString(this.Font, "Satisfaction rating: " + data.Satisfaction(this.Name, 2014).ToString() + "%", this.Position + new Vector2(10, 270), Color.Black);
             }
             this.button2009.Draw(spriteBatch);
             this.button2010.Draw(spriteBatch);
