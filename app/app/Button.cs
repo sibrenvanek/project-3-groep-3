@@ -46,8 +46,8 @@ namespace app
             this.Texture = texture;
             this.buttonX = buttonX;
             this.buttonY = buttonY;
-            this.buttonWidth = 100;
-            this.buttonHeigth = 30;
+            this.buttonWidth = Texture.Width;
+            this.buttonHeigth = Texture.Height;
             this.Position = new Vector2(this.buttonX, this.buttonY);
             this.font = font;
             this.isClickable = true;

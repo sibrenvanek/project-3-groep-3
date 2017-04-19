@@ -28,8 +28,9 @@ namespace app
         /// and initialize them as well.
         /// </summary>
         BaseApp app;
-        Texture2D basemap;
+        Texture2D basemap, legenda;
         Texture2D rect;
+        Texture2D small_rect;
         Texture2D rect_info;
         Texture2D rectback1;
         Texture2D rectback2;
@@ -67,6 +68,8 @@ namespace app
 
             //use this.Content to load your game content here
             basemap = this.Content.Load<Texture2D>("basemap");
+            legenda = this.Content.Load<Texture2D>("Legenda");
+
             List_wijk_images.Add(this.Content.Load<Texture2D>("Centrum")); //0
             List_wijk_images.Add(this.Content.Load<Texture2D>("Charlois")); //1
             List_wijk_images.Add(this.Content.Load<Texture2D>("Delftshaven")); //2
@@ -93,8 +96,12 @@ namespace app
             Color[] data = new Color[200 * 30];
             for (int i = 0; i < data.Length; ++i) data[i] = Color.White;
             rect.SetData(data);
-            rect_info = new Texture2D(graphics.GraphicsDevice, 278, 500);
-            Color[] data_info = new Color[278 * 500];
+            small_rect = new Texture2D(graphics.GraphicsDevice, 100, 30);
+            Color[] small_data = new Color[100 * 30];
+            for (int i = 0; i < small_data.Length; ++i) small_data[i] = Color.White;
+            small_rect.SetData(small_data);
+            rect_info = new Texture2D(graphics.GraphicsDevice, 400, 500);
+            Color[] data_info = new Color[400 * 500];
             for (int i = 0; i < data_info.Length; ++i) data_info[i] = Color.White;
             rect_info.SetData(data_info);
             int height = graphics.PreferredBackBufferHeight / 7;
@@ -120,42 +127,9 @@ namespace app
             rectback6.SetData(databack);
             for (int i = 0; i < databack.Length; ++i) databack[i] = Color.Violet;
             rectback7.SetData(databack);
-            //List_Buttons.Add(new Button("button 1", rect, 1000, 30));
-            //List_Buttons.Add(new Button("button 2", rect, 1200, 30));
-
-
-            //string name_button = "button1";
-            //int counter = 0;
-            //int counter2 = 0;
-            //int X_pos = 900;
-            //int Y_pos = 20;
-
-
-            //while (counter <= 75)
-            //{
-
-            //    X_pos = X_pos + 100;
-            //    Y_pos = 20;
-            //    counter = counter + 1;
-            //    counter2 = 0;
-
-            //    while (counter2 <= 19)
-            //    {
-            //        List_Buttons.Add(new Button(name_button, rect, X_pos, Y_pos,Font));
-            //        counter2 = counter2 + 1;
-            //        Y_pos = Y_pos + 50;
-
-            //    }
-
-            //}
-
-
+            
             Font = Content.Load<SpriteFont>("File");
-            app = new BaseApp(basemap, List_wijk_images, Font, rect, 100, rect_info, List_Wijken);
-
-            //Texture2D button1texture = this.Content.Load<Texture2D>("button 1");
-            //Texture2D button2texture = this.Content.Load<Texture2D>("button 2");
-            //DBConnection.Insert();
+            app = new BaseApp(basemap, List_wijk_images, Font, rect, 100, rect_info, List_Wijken, legenda, small_rect);
         }
 
         /// <summary>

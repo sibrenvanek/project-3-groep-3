@@ -11,23 +11,17 @@ namespace app
 {
     class BaseApp
     {
-        Texture2D Background;
+        Texture2D Background, Legenda;
 
-        BaseApp app;
-        Texture2D basemap;
-        Texture2D array_wijk_image;
-        Texture2D rect;
-        SpriteFont Font;
         List<Location> List_Locations = new List<Location>();
         List<string> List_names = new List<string>();
         List<Button> List_Buttons = new List<Button>();
-        List<string> List_Postcodes;
         //List<object> List_Buttons_Locations = new List<object>();
         Button Budget_input;
         int Budget;
         bool clicked;
 
-        public BaseApp(Texture2D background, List<Texture2D> List_wijk_image, SpriteFont Font, Texture2D rect, int budget, Texture2D rect_info, List<string> list_names)
+        public BaseApp(Texture2D background, List<Texture2D> List_wijk_image, SpriteFont Font, Texture2D rect, int budget, Texture2D rect_info, List<string> list_names, Texture2D legenda, Texture2D small_rect)
         {
 
             List_names = list_names;
@@ -35,8 +29,7 @@ namespace app
             int counter2 = 0;
             int X_pos = 1000;
             int Y_pos = 10;
-            Budget_input = new Button("Budget_input", rect, 1400, 500, Font);
-            //budget = Budget_input.budget_input();
+            Budget_input = new Button("Budget_input", rect, 10, 10, Font);
             while (counter < 10)
             {
                 List_Buttons.Add(new Button(List_names[counter], rect, X_pos, Y_pos, Font));
@@ -44,17 +37,19 @@ namespace app
                 counter++;
             }
             this.Background = background;
+            this.Legenda = legenda;
             Random rnd = new Random();
             while(counter2 < 10)
             {
                 budget = rnd.Next(1, 201);
-                List_Locations.Add(new Location(List_names[counter2], List_names[counter2], List_wijk_image[counter2], List_Buttons[counter2], budget, rect_info));
+                List_Locations.Add(new Location(List_names[counter2], List_names[counter2], List_wijk_image[counter2], List_Buttons[counter2], budget, rect_info, Font, small_rect));
                 counter2++;
             }
         }
         public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(this.Background, new Vector2(0, 0), Color.White);
+            spriteBatch.Draw(this.Legenda, new Vector2(0, 406), Color.White);
             Budget_input.Draw(spriteBatch);
             foreach (Location loc in List_Locations)
             {
@@ -93,9 +88,9 @@ namespace app
         {
             Budget_input.Update(dt);
             if (Budget_input.isHovered)
-            {
                 Budget_input.color = Color.LightGray;
-            }
+            else
+                Budget_input.color = Color.White;
             checkClick();
             foreach (Location loc in List_Locations)
             {
@@ -104,7 +99,6 @@ namespace app
             if (this.Budget_input.isClicked)
             {
                 this.clicked = true;
-
             }
             else if (this.clicked)
             {
@@ -112,7 +106,6 @@ namespace app
                 Budget = Budget_input.budget_input();
                 Update_budget();
             }
-            Budget_input.color = Color.White;
             clickReset();
         }
     }

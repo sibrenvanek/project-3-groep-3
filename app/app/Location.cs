@@ -12,7 +12,7 @@ namespace app
     {
         string Name, Postcode;
         float WOZ;
-        Texture2D Image, Rect_info;
+        Texture2D Image;
         Color Color;
         Vector2 Position;
         List<Button> List_Location_Buttons = new List<Button>();
@@ -22,7 +22,8 @@ namespace app
         public bool hasBeenClicked, isClickable;
         public int Budget;
         Form1 info = new Form1();
-        public Location(string name, string postcode, Texture2D image, Button Button, int budget, Texture2D rect_info)
+        Info InfoWindow;
+        public Location(string name, string postcode, Texture2D image, Button Button, int budget, Texture2D rect_info, SpriteFont font, Texture2D small_rect)
         {
             this.Name = name;
             this.Postcode = postcode;
@@ -32,9 +33,8 @@ namespace app
             this.Budget = budget;
             this.WOZ = 100;
             this.button = Button;
-            this.Rect_info = rect_info;
             this.isClickable = true;
-
+            this.InfoWindow = new Info(name, new Vector2(1300, 10), rect_info, font, small_rect);
 
 
             //this.WOZ = getWOZ();
@@ -51,10 +51,10 @@ namespace app
         {
             spritebatch.Draw(this.Image, this.Position, this.Color);
             this.button.Draw(spritebatch);
-            Vector2 infowindowpos = new Vector2(1445, 10);
+            Vector2 infowindowpos = new Vector2(1300, 10);
             if (this.hasBeenClicked)
             {
-                spritebatch.Draw(this.Rect_info, infowindowpos, Color.White);
+                InfoWindow.Draw(spritebatch);
             }
         }
         public void Update(float dt)
@@ -119,16 +119,18 @@ namespace app
             {
                 if (!(this.hasBeenClicked))
                 {
-                    info.Show();
+                    //info.Show();
                     this.hasBeenClicked = true;
                 }
                 else if (this.hasBeenClicked)
                 {
-                    info.Hide();
+                    //info.Hide();
                     this.hasBeenClicked = false;
                 }
                 this.clicked = false;
             }
+            if (this.hasBeenClicked)
+                this.InfoWindow.Update(dt);
         }
     }
 }
